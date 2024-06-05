@@ -33,15 +33,23 @@ return {
         ignorecase = false,
         inccommand = "",
         cindent = true,
-        
+        clipboard = {
+          name = "xclip",
+	        copy = {
+		        ["+"] = { "xclip", "-quiet", "-i", "-selection", "clipboard" },
+		        ["*"] = { "xclip", "-quiet", "-i", "-selection", "clipboard" },
+	        },
+	        paste = {
+		        ["+"] = { "xclip", "-o", "-selection", "clipboard" },
+		        ["*"] = { "xclip", "-o", "-selection", "clipboard" },
+	        },
+	        cache_enabled = 1, -- cache MUST be enabled, or else it hangs on dd/y/x and all other copy operations
+        }
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
-        clipboard = {
-          name = "*",
-        }
       },
     },
     -- Mappings can be configured through AstroCore as well.
