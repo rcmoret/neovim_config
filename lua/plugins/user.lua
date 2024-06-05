@@ -74,6 +74,12 @@ return {
         -- disable for .vim files, but it work for another filetypes
         Rule("a", "a", "-vim")
       )
+      npairs.remove_rule "("
+      npairs.remove_rule "["
+      npairs.remove_rule "{"
+      npairs.remove_rule '"'
+      npairs.remove_rule "'"
+      npairs.add_rules(require "nvim-autopairs.rules.endwise-ruby")
     end,
   },
   {
