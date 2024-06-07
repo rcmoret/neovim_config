@@ -85,4 +85,6 @@ return {
     "uloco/bluloco.nvim",
     dependencies = { "rktjmp/lush.nvim" },
   },
+  "tpope/vim-rhubarb",
+  "tpope/vim-fugitive",
 }
