@@ -87,5 +87,6 @@ return {
   },
   "tpope/vim-rhubarb",
   "tpope/vim-fugitive",
+  "tpope/vim-rails",
   "ThePrimeagen/harpoon",
 }
