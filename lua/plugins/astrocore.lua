@@ -110,6 +110,16 @@ return {
         ["N"] = { "Nzzzv" },
         ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]] },
 
+        ["<Leader>h"] = { desc = "Harpoon Helpers" },
+        ["<Leader>hM"] = { function() require("harpoon.mark").add_file() end, desc = "Add a Mark" },
+        ["<Leader>hm"] = { function() require("harpoon.ui").toggle_quick_menu() end, desc = "Toggle Quick Menu" },
+        ["<Leader>ha"] = { function() require("harpoon.ui").nav_file(1) end, desc = "Go to File (1)" },
+        ["<Leader>hs"] = { function() require("harpoon.ui").nav_file(2) end, desc = "Go to File (2)" },
+        ["<Leader>hd"] = { function() require("harpoon.ui").nav_file(3) end, desc = "Go to File (3)" },
+        ["<Leader>hf"] = { function() require("harpoon.ui").nav_file(4) end, desc = "Go to File (4)" },
+        ["<C-b>"] = { function() require("harpoon.ui").nav_next() end, },
+        ["<C-B>"] = { function() require("harpoon.ui").nav_prev() end, },
+
         -- tables with just a `desc` key will be registered with which-key if it's installed
         -- this is useful for naming menus
         -- ["<Leader>b"] = { desc = "Buffers" },
