@@ -26,5 +26,6 @@ return require("packer").startup(function(use)
       }
     end
   })
+  use "tpope/vim-commentary"
   use "folke/which-key.nvim"
 end)
