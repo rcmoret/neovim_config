@@ -7,6 +7,11 @@ return require("packer").startup(function(use)
   -- PACKER
   use "wbthomason/packer.nvim"
 
+  -- BLULOCO
+  use({
+    "uloco/bluloco.nvim",
+    requires = { { "rktjmp/lush.nvim" } },
+  })
   -- NVIM-TMUX-NAVIGATION
   use({
     "alexghergh/nvim-tmux-navigation",
