@@ -9,7 +9,7 @@ return require('packer').startup(function(use)
   use({
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
-  })
+ })
 
   use({
     'nvim-telescope/telescope.nvim', tag = '0.1.6',
@@ -35,4 +35,6 @@ return require('packer').startup(function(use)
           }
       }
     end})
+
+  use "tpope/vim-commentary"
 end)
