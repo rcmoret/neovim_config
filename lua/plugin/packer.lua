@@ -12,6 +12,60 @@ return require("packer").startup(function(use)
     requires = { { "rktjmp/lush.nvim" } },
   })
   use({
+    "princejoogie/dir-telescope.nvim",
+    requires = { "nvim-telescope/telescope.nvim" }
+  })
+  use({
+    "Bekaboo/dropbar.nvim",
+    requires = {
+      "nvim-telescope/telescope-fzf-native.nvim"
+    }
+  })
+  use "rafamadriz/friendly-snippets"
+  use "lewis6991/gitsigns.nvim"
+  use "lukas-reineke/indent-blankline.nvim"
+  use({
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  })
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons", opt = true },
+      { "lewis6991/gitsigns.nvim" }
+    }
+  })
+  use({
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "mrded/nvim-lsp-notify"
+    }
+  })
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "onsails/lspkind.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+    },
+  })
+  use({
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  })
+  use "brenoprata10/nvim-highlight-colors"
+  use({
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup {
@@ -28,6 +82,13 @@ return require("packer").startup(function(use)
     end
   })
   use "nvim-tree/nvim-web-devicons"
+  use({
+    "nvim-telescope/telescope.nvim", tag = "0.1.6",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    }
+  })
   use "tpope/vim-abolish"
   use "tpope/vim-commentary"
   use "tpope/vim-endwise"
