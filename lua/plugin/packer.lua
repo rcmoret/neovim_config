@@ -14,6 +14,11 @@ return require("packer").startup(function(use)
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
   })
+  -- DIR-TELESCOPE
+  use({
+    "princejoogie/dir-telescope.nvim",
+    requires = { "nvim-telescope/telescope.nvim" }
+  })
   -- NVIM-TMUX-NAVIGATION
   use({
     "alexghergh/nvim-tmux-navigation",
@@ -32,6 +37,16 @@ return require("packer").startup(function(use)
   })
   -- NVIM-WEB-DEVICONS
   use "nvim-tree/nvim-web-devicons"
+  -- TAILISCOPE
+  use "danielvolchek/tailiscope.nvim"
+  -- TELESCOPE
+  use({
+    "nvim-telescope/telescope.nvim", tag = "0.1.6",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    }
+  })
   -- VIM-ABOLISH
   use "tpope/vim-abolish"
   -- VIM-COMMENTARY
