@@ -37,6 +37,13 @@ return require("packer").startup(function(use)
     }
   })
   use "nvim-tree/nvim-web-devicons"
+  use({
+    "nvim-telescope/telescope.nvim", tag = "0.1.6",
+    requires = {
+      {"nvim-lua/plenary.nvim"},
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
+    }
+  })
   use "tpope/vim-abolish"
   use "tpope/vim-commentary"
   use "tpope/vim-endwise"
