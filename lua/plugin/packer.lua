@@ -38,4 +38,6 @@ return require('packer').startup(function(use)
 
   use "tpope/vim-commentary"
   use "mileszs/ack.vim"
+  use "mbbill/undotree"
+  use "folke/which-key.nvim"
 end)
