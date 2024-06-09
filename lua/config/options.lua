@@ -14,3 +14,12 @@ vim.opt.expandtab = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+vim.opt.history = 10000
+vim.opt.background = "dark"
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "> ",
+  space = " ",
+  trail = "·",
+}
