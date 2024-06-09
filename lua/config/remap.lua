@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<Leader>pv", vim.cmd.Ex)
+
+-- TABS
 vim.keymap.set("n", "tt", "<cmd>tabnew<CR>")
 vim.keymap.set("n", "tT", "<cmd>tab split<CR>")
 vim.keymap.set("n", "tq", "<cmd>tabclose<CR>")
@@ -19,6 +21,8 @@ vim.keymap.set("n", "t8", "8gt")
 vim.keymap.set("n", "t9", "9gt")
 vim.keymap.set("n", "<Tab>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<S-Tab>", "<cmd>tabprev<CR>")
+
+-- SPLITS
 vim.keymap.set("n", "|", "<cmd>vs<CR>")
 vim.keymap.set("n", "\\", "<cmd>sp<CR>")
 
