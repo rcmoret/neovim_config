@@ -21,3 +21,14 @@ vim.keymap.set("n", "<Tab>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<S-Tab>", "<cmd>tabprev<CR>")
 vim.keymap.set("n", "|", "<cmd>vs<CR>")
 vim.keymap.set("n", "\\", "<cmd>sp<CR>")
+
+-- COPY / PASTE
+vim.keymap.set("v", "<Leader>c", [["+y]])
+vim.keymap.set({ "v", "n" }, "<Leader>p", [["+p]])
+vim.keymap.set({ "v", "n" }, "<Leader>x", [["+x]])
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<leader>s", [[:s/\(\<<C-r><C-w>\>\)/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>S", [[:%s/\(\<<C-r><C-w>\>\)/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "J", "mzJ`z")
