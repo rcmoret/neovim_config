@@ -22,5 +22,7 @@ wk.register({
     s = { name = "Packer Sync" },
   },
   m = { name = "Mason Plugins" },
+  s = { name = "Substitute Current Word (line)" },
+  S = { name = "Substitute Current Word (file)" },
   x = { name = "Cut to Clipboard" },
 }, { prefix = "<Leader>" })
