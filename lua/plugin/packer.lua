@@ -11,6 +11,7 @@ return require("packer").startup(function(use)
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
   })
+  use "lewis6991/gitsigns.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use({
     "alexghergh/nvim-tmux-navigation",
