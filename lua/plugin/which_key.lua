@@ -16,6 +16,7 @@ wk.register({
     f = "Find Files",
   },
   c = { name = "Copy to Clipboard" },
+  g = { name = "Git helpers", },
   p = { name = "Paste from Clipboard" },
   P = {
     name = "Packer",

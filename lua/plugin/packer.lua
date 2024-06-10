@@ -46,5 +46,7 @@ return require('packer').startup(function(use)
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
 
   use "tpope/vim-commentary"
+  use "tpope/vim-fugitive"
+  use "tpope/vim-rhubarb"
   use "mileszs/ack.vim"
 end)
