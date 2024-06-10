@@ -11,6 +11,7 @@ return require("packer").startup(function(use)
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
   })
+  use "lukas-reineke/indent-blankline.nvim"
   use({
     "princejoogie/dir-telescope.nvim",
     requires = { "nvim-telescope/telescope.nvim" }
