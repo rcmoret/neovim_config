@@ -24,3 +24,23 @@ vim.opt.listchars = {
   space = " ",
   trail = "·",
 }
+
+local function delayed_start_up_func()
+    local timer = vim.loop.new_timer()
+    local function callback()
+      vim.cmd.set([[winfixbuf]])
+      -- vim.cmd([[set winfixbuf ]])
+    end
+    -- Delay 2000ms and 0 means "do not repeat"
+    timer:start(2000, 0, vim.schedule_wrap(callback))
+end
+delayed_start_up_func()
+
+vim.api.nvim_create_autocmd(
+  { "FocusGained", "BufEnter", "CursorHold" },
+  {
+    callback = function()
+      vim.api.nvim_command("checktime")
+    end
+  }
+)
