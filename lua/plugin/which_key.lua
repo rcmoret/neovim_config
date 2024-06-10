@@ -12,9 +12,9 @@ wk.setup({
 
 wk.register({
   c = { name = "[c]opy to clipboard" },
-  g = { name = "Git helpers", },
-  m = { name = "Mason Plugins" },
+  g = { name = "[g]it helpers", },
   l = { name = "[l]sp commands" },
+  m = { name = "Mason Plugins" },
   p = { name = "[p]aste from clipboard" },
   P = { name = "[P]acker" },
   m = { name = "[m]ason plugins" },
