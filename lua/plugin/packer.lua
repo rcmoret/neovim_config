@@ -36,6 +36,18 @@ return require('packer').startup(function(use)
       }
     end})
 
+  use "neovim/nvim-lspconfig"
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "hrsh7th/nvim-cmp"
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer"
+  use "hrsh7th/cmp-path"
+  use "L3MON4D3/LuaSnip"
+  use "rafamadriz/friendly-snippets"
+  use "mfussenegger/nvim-lint"
+  use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+
   use "tpope/vim-commentary"
   use "mileszs/ack.vim"
   use "mbbill/undotree"
