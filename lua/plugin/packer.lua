@@ -28,6 +28,8 @@ return require("packer").startup(function(use)
     end
   })
   use "tpope/vim-commentary"
+  use "tpope/vim-fugitive"
   use "tpope/vim-rails"
+  use "tpope/vim-rhubarb"
   use "folke/which-key.nvim"
 end)
