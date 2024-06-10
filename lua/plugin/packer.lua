@@ -81,4 +81,10 @@ return require("packer").startup(function(use)
   use "tpope/vim-unimpaired"
   -- WHICH-KEY
   use "folke/which-key.nvim"
+
+  -- LSP
+  use "neovim/nvim-lspconfig"
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "j-hui/fidget.nvim"
 end)
