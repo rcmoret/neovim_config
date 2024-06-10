@@ -15,11 +15,9 @@ return require("packer").startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use({
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
     requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
+      {"nvim-lua/plenary.nvim"},
+      { "nvim-telescope/telescope-live-grep-args.nvim" },
     }
   })
   use({
@@ -77,4 +75,16 @@ return require("packer").startup(function(use)
   use "tpope/vim-surround"
   use "mbbill/undotree"
   use "folke/which-key.nvim"
+
+  -- LSP
+  use "neovim/nvim-lspconfig"
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "mfussenegger/nvim-lint"
+  use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  use "akinsho/flutter-tools.nvim"
+  use "lvimuser/lsp-inlayhints.nvim"
+  use "mfussenegger/nvim-dap"
+  use "scalameta/nvim-metals"
+  use "j-hui/fidget.nvim"
 end)
