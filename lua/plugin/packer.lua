@@ -101,4 +101,16 @@ return require("packer").startup(function(use)
   use "tpope/vim-surround"
   use "tpope/vim-unimpaired"
   use "folke/which-key.nvim"
+
+  -- LSP
+  use "neovim/nvim-lspconfig"
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
+  use "mfussenegger/nvim-lint"
+  use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  use "akinsho/flutter-tools.nvim"
+  use "lvimuser/lsp-inlayhints.nvim"
+  use "mfussenegger/nvim-dap"
+  use "scalameta/nvim-metals"
+  use "j-hui/fidget.nvim"
 end)
