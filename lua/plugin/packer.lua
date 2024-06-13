@@ -48,9 +48,10 @@ return require('packer').startup(function(use)
   use "tpope/vim-commentary"
   use "tpope/vim-fugitive"
   use "tpope/vim-rhubarb"
+  use "tpope/vim-rails"
+  use "tpope/vim-surround"
   use "lukas-reineke/indent-blankline.nvim"
   use "lewis6991/gitsigns.nvim"
   use "mileszs/ack.vim"
-  use "tpope/vim-rails"
   use "mbbill/undotree"
 end)
