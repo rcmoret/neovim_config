@@ -16,6 +16,7 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
+vim.opt.autoread = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -28,3 +29,12 @@ vim.opt.listchars = {
   space = " ",
   trail = "·",
 }
+
+vim.api.nvim_create_autocmd(
+  { "FocusGained", "BufEnter", "CursorHold" },
+  {
+    callback = function()
+      vim.api.nvim_command("checktime")
+    end
+  }
+)
