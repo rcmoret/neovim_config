@@ -51,5 +51,6 @@ return require('packer').startup(function(use)
   use "lukas-reineke/indent-blankline.nvim"
   use "lewis6991/gitsigns.nvim"
   use "mileszs/ack.vim"
+  use "tpope/vim-rails"
   use "mbbill/undotree"
 end)
