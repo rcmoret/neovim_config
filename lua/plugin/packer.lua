@@ -30,6 +30,8 @@ return require("packer").startup(function(use)
       }
     end
   })
+  -- VIM-ABOLISH
+  use "tpope/vim-abolish"
   -- VIM-COMMENTARY
   use "tpope/vim-commentary"
   -- VIM-FUGITIVE
