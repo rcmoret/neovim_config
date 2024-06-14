@@ -14,6 +14,35 @@ return require("packer").startup(function(use)
   use "lewis6991/gitsigns.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use({
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  })
+  use({
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  })
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "onsails/lspkind.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+    },
+  })
+  use({
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup {
@@ -29,15 +58,6 @@ return require("packer").startup(function(use)
       }
     end
   })
-  use({
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim"
-    }
-  })
   use "nvim-tree/nvim-web-devicons"
   use({
     "nvim-telescope/telescope.nvim", tag = "0.1.6",
@@ -49,11 +69,12 @@ return require("packer").startup(function(use)
   use "mbbill/undotree"
   use "tpope/vim-abolish"
   use "tpope/vim-commentary"
-  use "tpope/vim-endwise"
   use "tpope/vim-fugitive"
-  use "tpope/vim-rails"
-  use "tpope/vim-rhubarb"
-  use "tpope/vim-surround"
+  use "tpope/vim-endwise"
   use "tpope/vim-unimpaired"
+  use "tpope/vim-rhubarb"
+  use "tpope/vim-rails"
+  use "tpope/vim-surround"
+  use "mbbill/undotree"
   use "folke/which-key.nvim"
 end)
