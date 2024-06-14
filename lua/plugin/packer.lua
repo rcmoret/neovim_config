@@ -27,6 +27,7 @@ return require("packer").startup(function(use)
       }
     end
   })
+  use "tpope/vim-abolish"
   use "tpope/vim-commentary"
   use "tpope/vim-fugitive"
   use "tpope/vim-rails"
