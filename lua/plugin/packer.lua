@@ -66,6 +66,7 @@ use {
   use "tpope/vim-rhubarb"
   use "tpope/vim-rails"
   use "tpope/vim-surround"
+  use "tpope/vim-abolish"
   use "lukas-reineke/indent-blankline.nvim"
   use "lewis6991/gitsigns.nvim"
   use "mileszs/ack.vim"
