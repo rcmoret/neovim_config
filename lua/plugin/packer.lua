@@ -68,6 +68,7 @@ use {
   use "tpope/vim-surround"
   use "tpope/vim-abolish"
   use "tpope/vim-endwise"
+  use "tpope/vim-unimpaired"
   use "lukas-reineke/indent-blankline.nvim"
   use "lewis6991/gitsigns.nvim"
   use "mileszs/ack.vim"
