@@ -47,6 +47,8 @@ use {
     }
   }
 
+  use "nvim-treesitter/nvim-treesitter"
+
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
