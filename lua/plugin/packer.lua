@@ -34,6 +34,8 @@ return require("packer").startup(function(use)
   use "tpope/vim-abolish"
   -- VIM-COMMENTARY
   use "tpope/vim-commentary"
+  -- VIM-ENDWISE
+  use "tpope/vim-endwise"
   -- VIM-FUGITIVE
   use "tpope/vim-fugitive"
   -- VIM-RAILS
