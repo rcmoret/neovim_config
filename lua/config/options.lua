@@ -29,6 +29,7 @@ vim.opt.listchars = {
   space = " ",
   trail = "·",
 }
+vim.opt.iskeyword:append({"-", "@"})
 
 vim.api.nvim_create_autocmd(
   { "FocusGained", "BufEnter", "CursorHold" },
