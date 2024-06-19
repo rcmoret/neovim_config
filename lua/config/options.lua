@@ -1,6 +1,6 @@
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.ignorecase = false

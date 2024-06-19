@@ -49,6 +49,7 @@ use {
 
   use "nvim-treesitter/nvim-treesitter"
 
+  use "rafamadriz/friendly-snippets"
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
@@ -66,6 +67,12 @@ use {
 
   use "mfussenegger/nvim-lint"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  use "honza/vim-snippets"
+
+  use "akinsho/flutter-tools.nvim"
+  use "lvimuser/lsp-inlayhints.nvim"
+  use "mfussenegger/nvim-dap"
+  use "scalameta/nvim-metals"
 
   use "tpope/vim-commentary"
   use "tpope/vim-fugitive"
