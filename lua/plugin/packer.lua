@@ -49,17 +49,35 @@ use {
 
   use "nvim-treesitter/nvim-treesitter"
 
+  use "rafamadriz/friendly-snippets"
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "L3MON4D3/LuaSnip"
-  use "rafamadriz/friendly-snippets"
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "onsails/lspkind.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+    },
+ }
+
+  -- use "hrsh7th/cmp-nvim-lsp"
+  -- use "hrsh7th/cmp-buffer"
+  -- use "hrsh7th/cmp-path"
+  -- use "hrsh7th/cmp-luasnip"
+  -- use "L3MON4D3/LuaSnip"
   use "mfussenegger/nvim-lint"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  use "honza/vim-snippets"
+
+  use "akinsho/flutter-tools.nvim"
+  use "lvimuser/lsp-inlayhints.nvim"
+  use "mfussenegger/nvim-dap"
+  use "scalameta/nvim-metals"
 
   use "tpope/vim-commentary"
   use "tpope/vim-fugitive"
