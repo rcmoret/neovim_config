@@ -15,14 +15,15 @@ return require("packer").startup(function(use)
     "princejoogie/dir-telescope.nvim",
     requires = { "nvim-telescope/telescope.nvim" }
   })
-  use "lewis6991/gitsigns.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
   use({
     "Bekaboo/dropbar.nvim",
     requires = {
       "nvim-telescope/telescope-fzf-native.nvim"
     }
   })
+  use "lewis6991/gitsigns.nvim"
+  use "brenoprata10/nvim-highlight-colors"
+  use "lukas-reineke/indent-blankline.nvim"
   use "rafamadriz/friendly-snippets"
   use "lewis6991/gitsigns.nvim"
   use "lukas-reineke/indent-blankline.nvim"
