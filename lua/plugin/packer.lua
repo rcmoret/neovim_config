@@ -69,9 +69,17 @@ use {
   use "tpope/vim-abolish"
   use "tpope/vim-endwise"
   use "tpope/vim-unimpaired"
+  use "tpope/vim-sexp-mappings-for-regular-people"
   use "lukas-reineke/indent-blankline.nvim"
   use "lewis6991/gitsigns.nvim"
   use "mileszs/ack.vim"
   use "mbbill/undotree"
   use "folke/which-key.nvim"
+  use {
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons", opt = true },
+      { "lewis6991/gitsigns.nvim" }
+    }
+  }
 end)
