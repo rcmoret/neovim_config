@@ -23,6 +23,14 @@ return require("packer").startup(function(use)
   use "lewis6991/gitsigns.nvim"
   -- INDENT-BLANKLINE
   use "lukas-reineke/indent-blankline.nvim"
+  -- LUALINE
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      { "nvim-tree/nvim-web-devicons", opt = true },
+      { "lewis6991/gitsigns.nvim" }
+    }
+  })
   -- NEO-TREE
   use({
     "nvim-neo-tree/neo-tree.nvim",
