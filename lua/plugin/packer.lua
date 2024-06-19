@@ -12,12 +12,13 @@ return require("packer").startup(function(use)
     requires = { { "rktjmp/lush.nvim" } },
   })
   use "lewis6991/gitsigns.nvim"
+  use "brenoprata10/nvim-highlight-colors"
   use "lukas-reineke/indent-blankline.nvim"
   use({
-    "nvim-neo-tree/neo-tree.nvim",
+    "nvim-lualine/lualine.nvim",
     requires = {
-      {"nvim-lua/plenary.nvim"},
-      { "nvim-telescope/telescope-live-grep-args.nvim" },
+      { "nvim-tree/nvim-web-devicons", opt = true },
+      { "lewis6991/gitsigns.nvim" }
     }
   })
   use({
