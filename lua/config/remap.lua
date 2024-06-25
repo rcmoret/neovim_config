@@ -21,6 +21,13 @@ vim.keymap.set("n", "t8", "8gt")
 vim.keymap.set("n", "t9", "9gt")
 vim.keymap.set("n", "<Tab>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<S-Tab>", "<cmd>tabprev<CR>")
+vim.keymap.set("n", "<Leader><Leader>w","<cmd>w<CR>", { desc = "[w]rite remapped" })
+vim.keymap.set("n", "<Leader><Leader>bd", "<cmd>bd<CR>", { desc = "[b]uffer [d]elte remapped" })
+vim.keymap.set("n", "<Leader><Leader>be", "<cmd>be<CR>", { desc = "[b]uffer r[e]load" })
+vim.keymap.set("n", "<Leader><Leader>q", "<cmd>q<CR>", { desc = "[q]uit remapped" })
+
+-- ESC
+vim.keymap.set({ "v", "n", "i" }, "<C-[>", "<Esc>")
 
 -- SPLITS
 vim.keymap.set("n", "|", "<cmd>vs<CR>")
@@ -36,11 +43,25 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "<Leader>s", [[:s/\(<C-r><C-w>\)/<C-r><C-w>/gcI<Left><Left><Left>]])
 vim.keymap.set("n", "<Leader>S", [[:%s/\(<C-r><C-w>\)/<C-r><C-w>/gcI<Left><Left><Left>]])
 vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<Leader>d", "yyp", { desc = "[d]uplicate current line" })
 
-vim.keymap.set("n", "<M-,>", "<c-w>5<")
-vim.keymap.set("n", "<M-.>", "<c-w>5>")
-vim.keymap.set("n", "<M-t>", "<C-W>+")
-vim.keymap.set("n", "<M-s>", "<C-W>-")
+-- RESIZING
+vim.keymap.set("n", "<M-n>", "<C-w>5<", { desc = "adjust window [n]arrow-er" })
+vim.keymap.set("n", "<M-w>", "<C-w>5>", { desc = "adjust window [w]ider" })
+vim.keymap.set("n", "<M-t>", "<C-w>5+", { desc = "adjust window [t]aller" })
+vim.keymap.set("n", "<M-s>", "<C-w>5-", { desc = "adjust window [s]horter" })
+-- ALTERNATE / ADDITIONAL RESIZING
+vim.keymap.set("n", "<Leader>rn", "<C-w>5<", { desc = "adjust bfr size [n]arrow-er" })
+vim.keymap.set("n", "<Leader>rs", "<C-w>5-", { desc = "adjust bfr size [s]horter" })
+vim.keymap.set("n", "<Leader>rt", "<C-w>5+", { desc = "adjust bfr size [t]aller" })
+vim.keymap.set("n", "<Leader>rw", "<C-w>5>", { desc = "adjust bfr size [w]ider" })
+vim.keymap.set("n", "<Leader>rz", "<C-w>_<C-w>|", { desc = "full si[z]e" })
+vim.keymap.set("n", "<Leader>rZ", "<C-w>=", { desc = "even si[Z]e" })
+vim.keymap.set("n", "<Leader>re", "<C-w>=", { desc = "resize buffers [=] evenly" })
+
+-- VIM / SOURCING
+vim.keymap.set("n", "<Leader><Leader>s", "<cmd>so<CR>", { desc = "[s]ource current file" })
+
 
 local toggle_qf = function()
   local qf_exists = false

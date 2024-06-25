@@ -20,6 +20,7 @@ wk.register({
   m = { name = "[m]ason plugins" },
   p = { name = "[p]aste from clipboard" },
   P = { name = "[P]acker" },
+  r = { name = "[r]esize buffers" },
   s = { name = "[s]ubstitute current word (line)" },
   S = { name = "[S]ubstitute current word (file)" },
   t = { name = "[t]elescope search" },
