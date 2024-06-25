@@ -82,5 +82,11 @@ use {
       { "lewis6991/gitsigns.nvim" }
     }
   }
+  use {
+    "goolord/alpha-nvim",
+    config = function()
+      require("alpha").setup(require("alpha.themes.startify").config)
+    end
+  }
   use "j-hui/fidget.nvim"
 end)
