@@ -52,12 +52,18 @@ use {
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
-  use "hrsh7th/nvim-cmp"
-  use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer"
-  use "hrsh7th/cmp-path"
-  use "L3MON4D3/LuaSnip"
-  use "rafamadriz/friendly-snippets"
+  use {
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "onsails/lspkind.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-buffer",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+    },
+ }
+
   use "mfussenegger/nvim-lint"
   use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
 
