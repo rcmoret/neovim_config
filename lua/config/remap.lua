@@ -22,6 +22,9 @@ vim.keymap.set("n", "t9", "9gt")
 vim.keymap.set("n", "<Tab>", "<cmd>tabnext<CR>")
 vim.keymap.set("n", "<S-Tab>", "<cmd>tabprev<CR>")
 
+-- ESC
+vim.keymap.set({ "v", "n", "i" }, "<C-[>", "<Esc>")
+
 -- SPLITS
 vim.keymap.set("n", "|", "<cmd>vs<CR>")
 vim.keymap.set("n", "\\", "<cmd>sp<CR>")
