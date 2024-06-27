@@ -102,4 +102,10 @@ use {
     end
   }
   use "j-hui/fidget.nvim"
+  use({
+    "Bekaboo/dropbar.nvim",
+    requires = {
+      "nvim-telescope/telescope-fzf-native.nvim"
+    }
+  })
 end)

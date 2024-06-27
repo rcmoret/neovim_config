@@ -32,6 +32,8 @@ vim.opt.listchars = {
 }
 vim.opt.iskeyword:append({"-", "@"})
 
+vim.ui.select = require("dropbar.utils.menu").select
+
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = vim.api.nvim_create_augroup("Quick Fix Override", { clear = false }),
   desc = "allow customization of the quickfix window",
