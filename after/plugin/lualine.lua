@@ -1,5 +1,4 @@
-local utils = require("config.icons")
-local icons = utils.icons
+local icons = require("config.icons").icons
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -21,12 +20,24 @@ end
 local column_number = function()
   return "Col: " .. vim.fn.virtcol('.')
 end
+local branch_abbr = function()
+  local short_branch = vim.fn.system("git branch --show-current | cut -d '/' -f3 | tr -cd '[:alnum:]._-'")
+  return short_branch .. " " ..icons.git.conflict
+end
 
+local attached_lsps = function()
+  local buf_clients = vim.lsp.get_clients()
+  local list = "[LSP]"
+  for _, client in pairs(buf_clients) do
+    list = list .. " " .. client.name
+  end
+  return list
+end
 require("lualine").setup({
   sections = {
     lualine_a = { "mode" },
     lualine_b = {
-      { "branch", },
+      { branch_abbr, },
       {
         "diff",
         symbols = {
@@ -36,44 +47,49 @@ require("lualine").setup({
         },
         source = diff_source,
         diff_color = {
-          added = { fg = "#99c794" },
-          modified = { fg = "#3a86ff" },
-          removed = { fg = "#ff006e" },
+          added = { fg = "#06d6a0" },
+          modified = { fg = "#00ffff" },
+          removed = { fg = "#e57d7d" },
         },
       },
     },
     lualine_c = {
-      { "filename", path = 1, file_status = true },
+      { "filename", path = 0, file_status = true },
     },
-    lualine_x = { { "diagnostics" } },
+    lualine_x = {
+      {
+        "diagnostics",
+      },
+      {
+        require("noice").api.status.search.get,
+        cond = require("noice").api.status.search.has,
+        color = { fg = "#ff9e64" },
+      },
+    },
     lualine_y = {
       { "filetype" },
     },
     lualine_z = {
+      {
+        attached_lsps,
+      },
+      { line_number },
+      { column_number },
+      { "datetime", style = "%l:%M %p"  }
+    },
+  },
+  inactive_sections = {
+    lualine_x = {},
+    lualine_y = {
       { line_number },
       { column_number }
     },
-  },
-  winbar = {
-    lualine_a = {},
-    lualine_b = {
-      { "filename", file_status = true, use_mode_colors = false },
-    },
-    lualine_c = {
-      { current_signature }
-    },
-    lualine_y = { { "datetime", style = "%b %d, %Y %r" } },
     lualine_z = {}
   },
-  inactive_winbar = {
-    lualine_a = {
-      { "filename", file_status = true },
-    },
-  },
   options = {
-    theme = "OceanicNext",
+    theme = "Nord",
     icons_enabled = true,
-    component_separators = { left = "｜", right = "｜" },
+    component_separators = { left = "）", right = "｜" },
     section_separators = { left = icons.ui.powerline_round_left, right = icons.ui.powerline_round_right },
   }
 })

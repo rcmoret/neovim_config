@@ -245,6 +245,8 @@ M.icons = {
     lsp_warn = "󰀦 ",
     lsp_hint = "󰌵 ",
     lsp_info = "󰋼 ",
+    powerline_right_parens = "）",
+    powerline_left_parens = "（",
     powerline_round_right = "",
     powerline_round_left = "",
     powerline_square_right = " ",
@@ -257,6 +259,8 @@ M.icons = {
     new = "󰎔",
     prompt_prefix = "󰋇 ",
     selection_caret = " ",
+    tall_skinny_pipe = "｜",
+
   },
   git = {
     git = "󰊢 ",
