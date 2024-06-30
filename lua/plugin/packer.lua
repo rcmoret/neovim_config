@@ -108,4 +108,5 @@ use {
       "nvim-telescope/telescope-fzf-native.nvim"
     }
   })
+  use "brenoprata10/nvim-highlight-colors"
 end)
