@@ -109,4 +109,12 @@ use {
     }
   })
   use "brenoprata10/nvim-highlight-colors"
+  use({
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "mrded/nvim-lsp-notify"
+    }
+  })
 end)
