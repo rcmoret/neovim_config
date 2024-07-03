@@ -6,4 +6,7 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup(function(use)
   -- PACKER
   use "wbthomason/packer.nvim"
+
+  -- WHICH-KEY
+  use "folke/which-key.nvim"
 end)
