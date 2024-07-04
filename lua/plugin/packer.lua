@@ -8,6 +8,12 @@ return require("packer").startup(function(use)
 
   use "mileszs/ack.vim"
   use({
+    "goolord/alpha-nvim",
+    config = function()
+      require("alpha").setup(require("alpha.themes.startify").config)
+    end
+  })
+  use({
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
   })
