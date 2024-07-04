@@ -11,6 +11,12 @@ return require("packer").startup(function(use)
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
   })
+  use({
+    "goolord/alpha-nvim",
+    config = function()
+      require("alpha").setup(require("alpha.themes.startify").config)
+    end
+  })
   use "lewis6991/gitsigns.nvim"
   use "brenoprata10/nvim-highlight-colors"
   use "lukas-reineke/indent-blankline.nvim"
