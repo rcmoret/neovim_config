@@ -21,6 +21,7 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-fzf-native.nvim"
     }
   })
+  use "rafamadriz/friendly-snippets"
   use "lewis6991/gitsigns.nvim"
   use "lukas-reineke/indent-blankline.nvim"
   use "rafamadriz/friendly-snippets"
