@@ -30,6 +30,12 @@ return require("packer").startup(function(use)
   use "rafamadriz/friendly-snippets"
   -- GITSIGNS
   use "lewis6991/gitsigns.nvim"
+  -- HARPOON
+  use({
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  })
   -- INDENT-BLANKLINE
   use "lukas-reineke/indent-blankline.nvim"
   -- LUALINE

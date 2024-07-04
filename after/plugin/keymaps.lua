@@ -70,8 +70,6 @@ vim.keymap.set("n", "t6", "6gt", { desc = "go to [6]th tab" })
 vim.keymap.set("n", "t7", "7gt", { desc = "go to [7]th tab" })
 vim.keymap.set("n", "t8", "8gt", { desc = "go to [8]th tab" })
 vim.keymap.set("n", "t9", "9gt", { desc = "go to [9]th tab" })
-vim.keymap.set("n", "<Tab>", "<cmd>tabnext<CR>", { desc = "next tab" })
-vim.keymap.set("n", "<S-Tab>", "<cmd>tabprev<CR>", { desc = "prev tab" })
 
 -- VIM
 vim.keymap.set("n", "<Leader>w", "<cmd>w<CR>", { desc = "[w]rite remapped" })
