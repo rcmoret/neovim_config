@@ -23,6 +23,8 @@ vim.opt.iskeyword:append({"-", "@"})
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+vim.opt.timeout = true
+vim.opt.timeoutlen = 1200
 
 vim.opt.history = 10000
 vim.opt.background = "dark"

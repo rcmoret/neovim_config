@@ -2,6 +2,13 @@ local noice = require("noice")
 
 local colors = require("config.rusty-scheme")
 
+require("notify").setup({
+  background_colour = colors.white,
+  render = "simple",
+  stages = "fade_in_slide_out",
+  timeout = 200
+})
+
 noice.setup({
   cmdline = {
     view = "cmdline_popup"
@@ -94,7 +101,7 @@ require("which-key").register({
 vim.keymap.set("n", "<Leader>ne", function() noice.cmd("enable") end, { desc = "[n]otifications: [e]nable" })
 vim.keymap.set("n", "<Leader>nd", function() noice.cmd("disable") end, { desc = "[n]otifications: [d]isable" })
 vim.keymap.set("n", "<Leader>nh", function() noice.cmd("history") end, { desc = "[n]otifications: [h]istory" })
-vim.keymap.set("n", "<Leader>nn", test_notifications, { desc = "[n]otifications: send example [n]otifictions" })
+vim.keymap.set("n", "<Leader>nn", test_notifications, { desc = "[n]otifications: send [n]otifictions" })
 vim.keymap.set("n", "<Leader>nt", function() noice.cmd("telescope") end, { desc = "[n]otifications: history in [t]elescope" })
 vim.keymap.set("n", "<Leader>ni", function ()
    vim.cmd("Inspect")

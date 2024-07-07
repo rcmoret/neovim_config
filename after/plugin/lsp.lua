@@ -72,6 +72,7 @@ local tw_ruby_toggle_fn = function()
   tw_setup()
 end
 
+require("lspconfig.ui.windows").default_options.border = "rounded"
 
 require("which-key").register({ l = { name = "[l]sp commands" } }, { prefix = "<Leader>" })
 

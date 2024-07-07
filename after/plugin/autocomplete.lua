@@ -1,3 +1,4 @@
+local colors = require("config.rusty-scheme")
 vim.opt.completeopt = { "menu", "menuone" }
 vim.opt.shortmess:append "c"
 
@@ -81,10 +82,10 @@ cmp.setup({
   },
   window = {
     completion = cmp.config.window.bordered({
-      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None'
+      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpSelect,Search:CmpSelect'
     }),
     documentation = cmp.config.window.bordered({
-      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None'
+      winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpSelect,Search:None'
     }),
   },
   formatting = {
@@ -132,3 +133,36 @@ require("luasnip.loaders.from_vscode").load({
     "~/repos/rusty-snip"
   }
 })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = "#EED8DA", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#EED8DA", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = "#EED8DA", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = "#C3E88D", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindEnum", { fg = "#C3E88D", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = "#C3E88D", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindConstant", { fg = "#FFE082", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { fg = "#FFE082", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindReference", { fg = "#FFE082", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = "#EADFF0", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindStruct", { fg = "#EADFF0", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindClass", { fg = "#EADFF0", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = "#EADFF0", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindOperator", { fg = "#EADFF0", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = "#C5CDD9", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = "#C5CDD9", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = "#F5EBD9", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = "#F5EBD9", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = "#F5EBD9", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = "#DDE5F5", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindValue", { fg = "#DDE5F5", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { fg = "#DDE5F5", bg = colors.float_bg })
+
+-- vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = "#D8EEEB", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = "#D8EEEB", bg = colors.float_bg })
+-- vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = "#D8EEEB", bg = colors.float_bg })

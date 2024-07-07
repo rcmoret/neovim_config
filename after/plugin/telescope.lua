@@ -1,10 +1,10 @@
 local builtin = require("telescope.builtin")
-
 local telescope = require("telescope")
 telescope.load_extension("live_grep_args")
 telescope.load_extension("dir")
 telescope.load_extension("tailiscope")
 
+local colors = require("config.rusty-scheme")
 
 vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
 
@@ -88,14 +88,6 @@ telescope.setup({
 require("which-key").register({ t = { name = "[t]elescope search" } }, { prefix = "<Leader>" })
 
 vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
-
-local test_notifications = function()
-  vim.notify("default")
-  vim.notify("warn", vim.log.levels.WARN)
-  vim.notify("errors", vim.log.levels.ERROR)
-  vim.notify("info", vim.log.levels.INFO)
-  vim.notify("trace", vim.log.levels.TRACE)
-  vim.notify("debug", vim.log.levels.DEBUG)
-end
-
-vim.keymap.set("n", "<Leader><Leader>n", test_notifications, { desc = "test notifictions" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.float_bg, fg = colors.pale })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.teal })
+vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.dark_gray, fg = colors.teal, bold = true })
