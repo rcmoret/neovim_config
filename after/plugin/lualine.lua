@@ -1,4 +1,7 @@
+local noice = require("noice")
+
 local icons = require("config.icons").icons
+local colors = require("config.rusty-scheme")
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -49,7 +52,13 @@ require("lualine").setup({
       { "filename", path = 1, file_status = true },
     },
     lualine_x = {
-      { "diagnostics" },
+      {
+        "diagnostics",
+      },
+      {
+        noice.api.statusline.search.get,
+        cond = noice.api.statusline.search.has,
+      },
     },
     lualine_y = {
       { "filetype" },
