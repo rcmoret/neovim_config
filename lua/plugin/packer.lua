@@ -38,6 +38,8 @@ return require("packer").startup(function(use)
   use "tpope/vim-rails"
   -- VIM-RHUBARB
   use "tpope/vim-rhubarb"
+  -- VIM-SURROUND
+  use "tpope/vim-surround"
   -- WHICH-KEY
   use "folke/which-key.nvim"
 end)
