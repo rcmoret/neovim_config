@@ -56,6 +56,15 @@ return require("packer").startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   })
+  -- NOICE
+  use({
+    "folke/noice.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "mrded/nvim-lsp-notify"
+    }
+  })
   -- NVIM-CMP
   use({
     "hrsh7th/nvim-cmp",
