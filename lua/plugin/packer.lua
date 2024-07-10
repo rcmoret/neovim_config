@@ -47,6 +47,8 @@ return require("packer").startup(function(use)
       { "nvim-telescope/telescope-live-grep-args.nvim" },
     }
   })
+  -- UNDOTREE
+  use "mbbill/undotree"
   -- VIM-ABOLISH
   use "tpope/vim-abolish"
   -- VIM-COMMENTARY
