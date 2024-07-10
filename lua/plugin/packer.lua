@@ -48,6 +48,8 @@ return require("packer").startup(function(use)
       "MunifTanjim/nui.nvim",
     }
   })
+  -- NVIM-HIGHLIGHT-COLORS
+  use "brenoprata10/nvim-highlight-colors"
   -- NVIM-TMUX-NAVIGATION
   use({
     "alexghergh/nvim-tmux-navigation",
