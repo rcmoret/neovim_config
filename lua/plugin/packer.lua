@@ -7,6 +7,8 @@ return require("packer").startup(function(use)
   -- PACKER
   use "wbthomason/packer.nvim"
 
+  -- ACK
+  use "mileszs/ack.vim"
   -- BLULOCO
   use({
     "uloco/bluloco.nvim",
