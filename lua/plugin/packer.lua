@@ -21,6 +21,8 @@ return require("packer").startup(function(use)
   })
   -- GITSIGNS
   use "lewis6991/gitsigns.nvim"
+  -- INDENT-BLANKLINE
+  use "lukas-reineke/indent-blankline.nvim"
   -- NVIM-TMUX-NAVIGATION
   use({
     "alexghergh/nvim-tmux-navigation",
