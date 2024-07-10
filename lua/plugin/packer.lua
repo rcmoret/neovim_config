@@ -32,8 +32,12 @@ return require("packer").startup(function(use)
   })
   -- VIM-COMMENTARY
   use "tpope/vim-commentary"
+  -- VIM-FUGITIVE
+  use "tpope/vim-fugitive"
   -- VIM-RAILS
   use "tpope/vim-rails"
+  -- VIM-RHUBARB
+  use "tpope/vim-rhubarb"
   -- WHICH-KEY
   use "folke/which-key.nvim"
 end)
