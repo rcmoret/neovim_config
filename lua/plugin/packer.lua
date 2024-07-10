@@ -19,6 +19,8 @@ return require("packer").startup(function(use)
     "princejoogie/dir-telescope.nvim",
     requires = { "nvim-telescope/telescope.nvim" }
   })
+  -- GITSIGNS
+  use "lewis6991/gitsigns.nvim"
   -- NVIM-TMUX-NAVIGATION
   use({
     "alexghergh/nvim-tmux-navigation",
