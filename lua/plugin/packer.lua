@@ -30,6 +30,8 @@ return require("packer").startup(function(use)
       }
     end
   })
+  -- VIM-COMMENTARY
+  use "tpope/vim-commentary"
   -- WHICH-KEY
   use "folke/which-key.nvim"
 end)
