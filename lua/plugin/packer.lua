@@ -23,6 +23,16 @@ return require("packer").startup(function(use)
   use "lewis6991/gitsigns.nvim"
   -- INDENT-BLANKLINE
   use "lukas-reineke/indent-blankline.nvim"
+  -- NEO-TREE
+  use({
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    }
+  })
   -- NVIM-TMUX-NAVIGATION
   use({
     "alexghergh/nvim-tmux-navigation",
