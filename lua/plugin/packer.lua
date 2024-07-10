@@ -64,6 +64,8 @@ return require("packer").startup(function(use)
       }
     end
   })
+  -- NVIM-TREESITTER
+  use "nvim-treesitter/nvim-treesitter"
   -- NVIM-WEB-DEVICONS
   use "nvim-tree/nvim-web-devicons"
   -- TAILISCOPE
@@ -76,6 +78,8 @@ return require("packer").startup(function(use)
       { "nvim-telescope/telescope-live-grep-args.nvim" },
     }
   })
+  -- TOKYONIGHT
+  use "folke/tokyonight.nvim"
   -- UNDOTREE
   use "mbbill/undotree"
   -- VIM-ABOLISH
