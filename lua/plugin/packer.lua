@@ -30,6 +30,8 @@ return require("packer").startup(function(use)
       }
     end
   })
+  -- NVIM-WEB-DEVICONS
+  use "nvim-tree/nvim-web-devicons"
   -- VIM-ABOLISH
   use "tpope/vim-abolish"
   -- VIM-COMMENTARY
