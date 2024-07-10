@@ -1,9 +1,9 @@
-local colors = require("config.rusty-scheme")
+local light_switch = require("plugin.light_switch")
 vim.opt.completeopt = { "menu", "menuone" }
 vim.opt.shortmess:append "c"
 
 local cmp = require("cmp")
-vim.g.cmptoggle = true
+-- vim.g.cmptoggle = true
 
 local utils = require("config.icons")
 local icons = utils.icons
@@ -38,12 +38,19 @@ local cmp_kinds = {
   LSP = icons.ui.lsp_hint .. "  "
 }
 
+light_switch.register({
+  code = "cmp",
+  desc = "Code completion",
+  default = "on",
+})
+
 cmp.setup({
   enabled = function()
     local context = require("cmp.config.context")
     local is_comment = context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment")
 
-    return vim.g.cmptoggle and vim.bo.buftype ~= "prompt" and not(is_comment)
+    -- vim.notify(vim.inspect(light_switch.is_enabled("cmp")))
+    return light_switch.is_enabled("cmp") and vim.bo.buftype ~= "prompt" and not(is_comment)
   end,
   view = {
     selection_order = "near_cursor",
@@ -103,9 +110,6 @@ cmp.setup({
     end
   }
 })
-
-vim.keymap.set("n", "[oc", "<cmd>lua vim.g.cmptoggle = true<CR>", { desc = "enable code [c]ompletion" })
-vim.keymap.set("n", "]oc", "<cmd>lua vim.g.cmptoggle = false<CR>", { desc = "disable code [c]ompletion" })
 
 local ls = require("luasnip")
 

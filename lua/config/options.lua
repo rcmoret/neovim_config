@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.opt.termguicolors = true
 vim.opt.number = true
-vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
 vim.opt.wrap = false
 vim.opt.ignorecase = false
@@ -34,6 +33,36 @@ vim.opt.listchars = {
   space = " ",
   trail = "·",
 }
+
+local light_switch = require("plugin.light_switch")
+
+-- #832913
+
+light_switch.register({
+  code = "rel",
+  desc = "Relative line numbers",
+  default = "on",
+  enable = function()
+    vim.cmd([[windo set relativenumber]])
+    vim.cmd([[tabdo set relativenumber]])
+  end,
+  disable = function()
+    vim.cmd([[windo set norelativenumber]])
+    vim.cmd([[tabdo set norelativenumber]])
+  end
+})
+
+light_switch.register({
+  code = "wr",
+  desc = "Line wrap",
+  default = "off",
+  enable = function()
+    vim.opt.wrap = true
+  end,
+  disable = function()
+    vim.opt.wrap = false
+  end
+})
 
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = vim.api.nvim_create_augroup("Quick Fix Override", { clear = false }),

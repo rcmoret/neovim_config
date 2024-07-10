@@ -1,7 +1,14 @@
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
 local utils = require("config.icons")
+local light_switch = require("plugin.light_switch")
 local icons = utils.icons
+
+light_switch.register({
+  code = "twr",
+  desc = "TailwindCSS LSP on Ruby",
+  default = "off",
+})
 
 require("mason").setup({
   ui = {
@@ -9,10 +16,8 @@ require("mason").setup({
   }
 })
 
-vim.g.tw_ruby_toggle = false
-
 local tw_setup = function()
-  if vim.g.tw_ruby_toggle then
+  if light_switch.is_enabled("twr") then
     local tw_filetypes = {
       "html",
       "erb",
@@ -67,11 +72,6 @@ require("mason-lspconfig").setup({
   }
 })
 
-local tw_ruby_toggle_fn = function()
-  vim.g.tw_ruby_toggle = not(vim.g.tw_ruby_toggle)
-  tw_setup()
-end
-
 require("lspconfig.ui.windows").default_options.border = "rounded"
 
 require("which-key").register({ l = { name = "[l]sp commands" } }, { prefix = "<Leader>" })
@@ -89,7 +89,6 @@ vim.keymap.set("n", "<leader>ll", "<cmd>LspInfo<CR>", { desc = "[l]sp logs" })
 vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "[l]sp [r]ename" })
 vim.keymap.set("n", "<leader>lR", "<cmd>so ~/.config/nvim/after/plugin/lsp.lua<CR>", { desc = "[l]sp [R]eload" })
 vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.workspace_symbol() end, { desc = "[l]sp search for [s]ymbols" })
-vim.keymap.set("n", "<leader>lt", tw_ruby_toggle_fn, { desc = "[l]sp toggle [t]w lsp on ruby files" })
 
 vim.diagnostic.config({
   inlay_hint = {
