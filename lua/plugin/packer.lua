@@ -19,6 +19,13 @@ return require("packer").startup(function(use)
     "princejoogie/dir-telescope.nvim",
     requires = { "nvim-telescope/telescope.nvim" }
   })
+  -- DROPBAR
+  use({
+    "Bekaboo/dropbar.nvim",
+    requires = {
+      "nvim-telescope/telescope-fzf-native.nvim"
+    }
+  })
   -- GITSIGNS
   use "lewis6991/gitsigns.nvim"
   -- INDENT-BLANKLINE
