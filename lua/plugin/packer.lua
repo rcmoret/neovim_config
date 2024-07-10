@@ -17,6 +17,10 @@ return require("packer").startup(function(use)
     "uloco/bluloco.nvim",
     requires = { { "rktjmp/lush.nvim" } },
   })
+  -- COPILOT
+  use "zbirenbaum/copilot.lua"
+  -- COPILOT-CMP
+  use "zbirenbaum/copilot-cmp"
   use({
     "princejoogie/dir-telescope.nvim",
     requires = { "nvim-telescope/telescope.nvim" }
