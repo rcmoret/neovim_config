@@ -56,20 +56,20 @@ vim.keymap.set("n", "(", jump_to_paragraph_start, { silent = true, desc = "move 
 vim.keymap.set("n", ")", jump_to_paragraph_end, { silent = true, desc = "move to last line of paragraph" })
 
 -- TABS
-vim.keymap.set("n", "tt", "<cmd>tabnew<CR>", { desc = "open new [t]ab" })
-vim.keymap.set("n", "tq", "<cmd>tabclose<CR>", { desc = "[q]uit tab" })
-vim.keymap.set("n", "tQ", "<cmd>tabclose!<CR>", { desc = "[q]uit ! tab" })
-vim.keymap.set("n", "tn", "<cmd>tabnext<CR>", { desc = "[n]ext tab" })
-vim.keymap.set("n", "tp", "<cmd>tabprev<CR>", { desc = "[p]rev tab" })
-vim.keymap.set("n", "t1", "1gt", { desc = "go to [1]st tab" })
-vim.keymap.set("n", "t2", "2gt", { desc = "go to [2]nd tab" })
-vim.keymap.set("n", "t3", "3gt", { desc = "go to [3]rd tab" })
-vim.keymap.set("n", "t4", "4gt", { desc = "go to [4]th tab" })
-vim.keymap.set("n", "t5", "5gt", { desc = "go to [5]th tab" })
-vim.keymap.set("n", "t6", "6gt", { desc = "go to [6]th tab" })
-vim.keymap.set("n", "t7", "7gt", { desc = "go to [7]th tab" })
-vim.keymap.set("n", "t8", "8gt", { desc = "go to [8]th tab" })
-vim.keymap.set("n", "t9", "9gt", { desc = "go to [9]th tab" })
+vim.keymap.set("n", "<Leader>tt", "<cmd>tabnew<CR>", { desc = "open new [t]ab" })
+vim.keymap.set("n", "<Leader>tq", "<cmd>tabclose<CR>", { desc = "[q]uit tab" })
+vim.keymap.set("n", "<Leader>tQ", "<cmd>tabclose!<CR>", { desc = "[q]uit ! tab" })
+vim.keymap.set("n", "<Leader>tn", "<cmd>tabnext<CR>", { desc = "[n]ext tab" })
+vim.keymap.set("n", "<Leader>tp", "<cmd>tabprev<CR>", { desc = "[p]rev tab" })
+vim.keymap.set("n", "<Leader>t1", "1gt", { desc = "go to [1]st tab" })
+vim.keymap.set("n", "<Leader>t2", "2gt", { desc = "go to [2]nd tab" })
+vim.keymap.set("n", "<Leader>t3", "3gt", { desc = "go to [3]rd tab" })
+vim.keymap.set("n", "<Leader>t4", "4gt", { desc = "go to [4]th tab" })
+vim.keymap.set("n", "<Leader>t5", "5gt", { desc = "go to [5]th tab" })
+vim.keymap.set("n", "<Leader>t6", "6gt", { desc = "go to [6]th tab" })
+vim.keymap.set("n", "<Leader>t7", "7gt", { desc = "go to [7]th tab" })
+vim.keymap.set("n", "<Leader>t8", "8gt", { desc = "go to [8]th tab" })
+vim.keymap.set("n", "<Leader>t9", "9gt", { desc = "go to [9]th tab" })
 
 -- VIM
 vim.keymap.set("n", "<Leader>w", "<cmd>w<CR>", { desc = "[w]rite remapped" })
@@ -136,4 +136,5 @@ wk.add({
   { "<Leader><Leader>", group = "vi remaps" },
   { "<Leader>b", group ="[b]uffer" },
   { "<Leader>r", group = "[r]esize buffers" },
+  { "<Leader>t", group = "[t]ab commands" },
 })
