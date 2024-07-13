@@ -125,6 +125,8 @@ return require("packer").startup(function(use)
   use "tpope/vim-endwise"
   -- VIM-FUGITIVE
   use "tpope/vim-fugitive"
+  -- VIM-NUMBERTOGGLE
+  use "jeffkreeftmeijer/vim-numbertoggle"
   -- VIM-RAILS
   use "tpope/vim-rails"
   -- VIM-RHUBARB
