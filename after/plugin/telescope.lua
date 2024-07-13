@@ -80,7 +80,7 @@ telescope.setup({
   }
 })
 
-require("which-key").register({ t = { name = "[t]elescope search" } }, { prefix = "<Leader>" })
+require("which-key").add({ "<Leader>t", group = "[t]elescope search" })
 
 vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
 vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.float_bg, fg = colors.pale })

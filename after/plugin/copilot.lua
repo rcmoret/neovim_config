@@ -3,7 +3,7 @@ local panel = require("copilot.panel")
 
 require("copilot_cmp").setup()
 
-require("which-key").register({ C = { name = "[C]opilot", }, }, { prefix = "<Leader>" })
+require("which-key").add({ { "<Leader>C", group = "[C]opilot" } })
 
 vim.g.ghcp_panel_open = false
 copilot.setup({})

@@ -1,4 +1,4 @@
-require("which-key").register({ g = { name = "[g]it helpers" } }, { prefix = "<Leader>" })
+require("which-key").add({ { "<Leader>g", group = "[g]it helpers" } })
 
 vim.keymap.set("n", "<Leader>gb", "<cmd>:Git blame<CR>", { desc = "[g]it [b]lame" })
 vim.keymap.set("n", "<Leader>gd", "<cmd>:Gdiffsplit<CR>", { desc = "[g]it split [d]iff" })

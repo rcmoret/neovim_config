@@ -132,8 +132,8 @@ vim.keymap.set("n", "<Leader>rz", "<C-w>_<C-w>|", { desc = "full si[z]e" })
 vim.keymap.set("n", "<Leader>rZ", "<C-w>=", { desc = "even si[Z]e" })
 vim.keymap.set("n", "<Leader>re", "<C-w>=", { desc = "resize buffers [=] evenly" })
 
-wk.register({
-  ["<Leader>"] = { name = "vi remaps" },
-  ["b"] = { name = "[b]uffer" },
-  r = { name = "[r]esize buffers" },
-}, { prefix = "<Leader>" })
+wk.add({
+  { "<Leader><Leader>", group = "vi remaps" },
+  { "<Leader>b", group ="[b]uffer" },
+  { "<Leader>r", group = "[r]esize buffers" },
+})

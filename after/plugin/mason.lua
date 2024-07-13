@@ -1,7 +1,4 @@
-require("which-key").register({
-  m = { name = "[m]ason commands" },
-  prefix = "<Leader>"
-})
+require("which-key").add({ "<Leader>m", name = "[m]ason commands" })
 
 local mason_update = function()
   vim.cmd("MasonUpdate")

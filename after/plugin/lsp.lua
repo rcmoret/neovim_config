@@ -74,7 +74,7 @@ end
 
 require("lspconfig.ui.windows").default_options.border = "rounded"
 
-require("which-key").register({ l = { name = "[l]sp commands" } }, { prefix = "<Leader>" })
+require("which-key").add({ "<Leader>l", group = "[l]sp commands" })
 
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "[g]o to [d]efinition (LSP)" })
 vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, { desc = "[g]o to References (LSP)" })

@@ -93,10 +93,7 @@ local test_notifications = function()
   end
 end
 
-require("which-key").register({
-  n = { name = "[n]otifications" },
-  prefix = "<Leader>"
-})
+require("which-key").add({ "<Leader>n", group = "[n]otifications" })
 
 vim.keymap.set("n", "<Leader>ne", function() noice.cmd("enable") end, { desc = "[n]otifications: [e]nable" })
 vim.keymap.set("n", "<Leader>nd", function() noice.cmd("disable") end, { desc = "[n]otifications: [d]isable" })

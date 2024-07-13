@@ -136,7 +136,12 @@ return require("packer").startup(function(use)
   -- VIM-UNIMPAIRED
   use "tpope/vim-unimpaired"
   -- WHICH-KEY
-  use "folke/which-key.nvim"
+  use({
+    "folke/which-key.nvim",
+    requires = {
+      "echasnovski/mini.icons"
+    }
+  })
 
   -- LSP
   use "neovim/nvim-lspconfig"

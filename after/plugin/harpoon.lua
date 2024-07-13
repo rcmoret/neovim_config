@@ -48,19 +48,17 @@ end
 vim.keymap.set("n", "<Tab>", function() harpoon:list():next({ ui_nav_wrap = true }) end)
 vim.keymap.set("n", "<S-Tab>", function() harpoon:list():prev({ ui_nav_wrap = true }) end)
 
-require("which-key").register({
-  ["<Leader>"] = {
-    ["1"] = { name = "harpoon buffer @ [1]" },
-    ["2"] = "which_key_ignore",
-    ["3"] = "which_key_ignore",
-    ["4"] = "which_key_ignore",
-    ["5"] = "which_key_ignore",
-    ["6"] = "which_key_ignore",
-    ["7"] = "which_key_ignore",
-    ["8"] = "which_key_ignore",
-    ["9"] = "which_key_ignore",
-    ["0"] = "which_key_ignore",
-  }
+require("which-key").add({
+  { "<Leader>0", hidden = true },
+  { "<Leader>1", group = "harpoon buffer @ [1]" },
+  { "<Leader>2", hidden = true },
+  { "<Leader>3", hidden = true },
+  { "<Leader>4", hidden = true },
+  { "<Leader>5", hidden = true },
+  { "<Leader>6", hidden = true },
+  { "<Leader>7", hidden = true },
+  { "<Leader>8", hidden = true },
+  { "<Leader>9", hidden = true },
 })
 
 harpoon:extend({
