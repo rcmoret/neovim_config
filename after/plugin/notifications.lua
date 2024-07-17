@@ -41,31 +41,31 @@ noice.setup({
 })
 
 -- ERROR
-vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = colors.red, bg=colors.float_bg })
+vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = colors.light_red, bg=colors.near_black })
 vim.api.nvim_set_hl(0, "NotifyERRORBody", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyERRORIcon", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyERRORTitle", { link = "NormalFloat" })
 
 -- WARN
-vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg= colors.light_yellow, bg=colors.float_bg })
+vim.api.nvim_set_hl(0, "NotifyWARNBorder", { fg= colors.yellow, bg=colors.near_black })
 vim.api.nvim_set_hl(0, "NotifyWARNBody", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyWARNIcon", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyWARNTitle", { link = "NormalFloat" })
 
 -- INFO
-vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = colors.dark_blue, bg = colors.float_bg })
+vim.api.nvim_set_hl(0, "NotifyINFOBorder", { fg = colors.dark_blue, bg = colors.near_black })
 vim.api.nvim_set_hl(0, "NotifyINFOBody", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyINFOIcon", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyINFOTitle", { link = "NormalFloat" })
 
 -- DEBUG
-vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { fg = colors.dark_orange, bg = colors.float_bg })
+vim.api.nvim_set_hl(0, "NotifyDEBUGBorder", { fg = colors.orange, bg = colors.near_black })
 vim.api.nvim_set_hl(0, "NotifyDEBUGBody", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyDEBUGIcon", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyDEBUGTitle", { link = "NormalFloat" })
 
 -- TRACE
-vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { fg = colors.dark_green, bg = colors.float_bg })
+vim.api.nvim_set_hl(0, "NotifyTRACEBorder", { fg = colors.light_green, bg = colors.near_black })
 vim.api.nvim_set_hl(0, "NotifyTRACEBody", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyTRACEIcon", { link = "NormalFloat" })
 vim.api.nvim_set_hl(0, "NotifyTRACETitle", { link = "NormalFloat" })
