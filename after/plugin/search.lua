@@ -6,7 +6,11 @@ telescope.load_extension("dir")
 telescope.load_extension("tailiscope")
 
 
-vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
+vim.keymap.set("n", "<C-p>", function()
+  vim.notify("Control + 'p' is deprecated; it's 't' now", vim.log.levels.WARN)
+  builtin.git_files()
+end, { desc = "Fuzzy Find Files (git)" })
+vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
 
 vim.keymap.set("n", "<Leader>ta", builtin.autocommands, { desc = "[t]elescope search in [a]utocommands" })
 vim.keymap.set("n", "<Leader>tb", builtin.buffers, { desc = "[t]elescope search in [b]uffers" })
@@ -46,8 +50,8 @@ local toggle_selectbar = function()
   if vim.g.telescope_select_highlight_mode == "default" then
     select_highlight_notify("switching to light select bar")
     vim.g.telescope_select_highlight_mode = "light"
-    vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.white, fg = colors.dark_purple, bold = true })
-    vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.dark_purple })
+    vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.off_white, fg = colors.purple, bold = true })
+    vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.purple })
   else
     select_highlight_notify("switching to default select bar")
     vim.g.telescope_select_highlight_mode = "default"
@@ -82,7 +86,9 @@ telescope.setup({
 
 require("which-key").add({ "<Leader>t", group = "[t]elescope search" })
 
-vim.api.nvim_set_hl(0, "TelescopeBorder", { link = "FloatBorder" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.float_bg, fg = colors.pale })
-vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.teal })
-vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.dark_gray, fg = colors.teal, bold = true })
+vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.near_black, fg = colors.purple })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.purple })
+vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.gray, fg = colors.yellow, bold = true })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = colors.near_black, fg = colors.purple, bold = true })
+vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = colors.near_black, fg = colors.purple, bold = true })
