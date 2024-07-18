@@ -114,6 +114,14 @@ return require("packer").startup(function(use)
   use "tpope/vim-abolish"
   -- VIM-COMMENTARY
   use "tpope/vim-commentary"
+  -- VIM-DADBOD
+  use({
+    "tpope/vim-dadbod",
+    requires = {
+      "kristijanhusak/vim-dadbod-completion",
+      "kristijanhusak/vim-dadbod-ui",
+    }
+  })
   -- VIM-ENDWISE
   use "tpope/vim-endwise"
   -- VIM-FUGITIVE

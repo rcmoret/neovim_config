@@ -105,6 +105,13 @@ cmp.setup({
 
 vim.keymap.set("n", "[oc", "<cmd>lua vim.g.cmptoggle = true<CR>", { desc = "enable code [c]ompletion" })
 vim.keymap.set("n", "]oc", "<cmd>lua vim.g.cmptoggle = false<CR>", { desc = "disable code [c]ompletion" })
+cmp.setup.filetype({ "sql" }, {
+  sources = {
+    { name = "vim-dadbod-completion" },
+    { name = "copilot" },
+    { name = "buffer" }
+  },
+})
 
 local ls = require("luasnip")
 
