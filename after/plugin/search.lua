@@ -1,10 +1,10 @@
 local builtin = require("telescope.builtin")
-
 local telescope = require("telescope")
 telescope.load_extension("live_grep_args")
 telescope.load_extension("dir")
 telescope.load_extension("tailiscope")
 
+local colors = require("config.rusty-scheme")
 
 vim.keymap.set("n", "<C-p>", function()
   vim.notify("Control + 'p' is deprecated; it's 't' now", vim.log.levels.WARN)

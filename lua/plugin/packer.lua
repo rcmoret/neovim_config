@@ -43,6 +43,8 @@ return require("packer").startup(function(use)
       { "lewis6991/gitsigns.nvim" }
     }
   })
+  -- LUSH
+  use "rktjmp/lush.nvim"
   -- NEO-TREE
   use({
     "nvim-neo-tree/neo-tree.nvim",
@@ -148,5 +150,11 @@ return require("packer").startup(function(use)
   use "neovim/nvim-lspconfig"
   use "williamboman/mason.nvim"
   use "williamboman/mason-lspconfig.nvim"
+  -- use "mfussenegger/nvim-lint"
+  -- use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
+  -- use "akinsho/flutter-tools.nvim"
+  -- use "lvimuser/lsp-inlayhints.nvim"
+  -- use "mfussenegger/nvim-dap"
+  -- use "scalameta/nvim-metals"
   use "j-hui/fidget.nvim"
 end)

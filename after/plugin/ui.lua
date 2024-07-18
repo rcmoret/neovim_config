@@ -50,9 +50,9 @@ require("lualine").setup({
         },
         source = diff_source,
         diff_color = {
-          added = { fg = "#06d6a0" },
-          modified = { fg = "#00ffff" },
-          removed = { fg = "#e57d7d" },
+          added = { fg = colors.light_green },
+          modified = { fg = colors.dark_blue },
+          removed = { fg = colors.light_red },
         },
       },
     },

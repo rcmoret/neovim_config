@@ -3,5 +3,10 @@ require("nvim-highlight-colors").setup({
   enable_tailwind = true
 })
 
-vim.keymap.set("n", "[oC", "<cmd>HighlightColors On<CR>", { desc = "enable highlight [c]olors" })
-vim.keymap.set("n", "]oC", "<cmd>HighlightColors Off<CR>", { desc = "disable highlight [c]olors" })
+require("plugin.light_switch").register({
+  code = "co",
+  desc = "Colorizor",
+  default = "on",
+  enable = "HighlightColors On",
+  disable = "HighlightColors Off"
+})
