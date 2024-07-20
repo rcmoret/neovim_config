@@ -82,7 +82,7 @@ vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "[l]sp [i]nfo" })
 vim.keymap.set("n", "<leader>ll", "<cmd>LspInfo<CR>", { desc = "[l]sp [l]ogs" })
 vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "[l]sp [r]ename" })
 vim.keymap.set("n", "<leader>lR", "<cmd>so ~/.config/nvim/after/plugin/lsp.lua<CR>", { desc = "[l]sp [R]eload" })
-vim.keymap.set("n", "<leader>ls", function() vim.lsp.buf.workspace_symbol() end, { desc = "[l]sp search for [s]ymbols" })
+vim.keymap.set("n", "<leader>ls", vim.lsp.buf.workspace_symbol, { desc = "[l]sp search for [s]ymbols" })
 
 vim.diagnostic.config({
   inlay_hint = {

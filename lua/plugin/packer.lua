@@ -27,6 +27,8 @@ return require("packer").startup(function(use)
   use "rafamadriz/friendly-snippets"
   -- GITSIGNS
   use "lewis6991/gitsigns.nvim"
+  -- GITWORKTREE
+  use "ThePrimeagen/git-worktree.nvim"
   -- HARPOON
   use({
     "ThePrimeagen/harpoon",

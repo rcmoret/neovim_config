@@ -26,7 +26,6 @@ vim.keymap.set("n", "<Leader>gc", function()
 end, { desc = "[g]it [c]heckout file @" })
 
 -- GITSIGNS SETUP
-
 require("gitsigns").setup {
   signs = {
     add          = { text = "┃" },
@@ -73,3 +72,18 @@ local gitsigns = require("gitsigns")
 vim.keymap.set("n", "<Leader>gB", function()
   gitsigns.toggle_current_line_blame()
 end, { desc = "Toggle single line [B]lame" })
+
+
+-- GIT-WORKTREE SETUP
+local git_worktree = require("git-worktree")
+
+local switch_worktree = function()
+  local treename = vim.fn.input("tree >")
+  git_worktree.switch_worktree(treename)
+end
+
+vim.keymap.set("n", "<Leader>gts", switch_worktree, { desc = "[g]it work[t]ree [s]witch" })
+
+-- local add_worktree = function()
+--   local 
+-- end
