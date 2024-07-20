@@ -52,6 +52,8 @@ local jump_to_paragraph_end = function()
   end
 end
 
+vim.keymap.set("v", "(", jump_to_paragraph_start, { silent = true, desc = "move to last line of paragraph" })
+vim.keymap.set("v", ")", jump_to_paragraph_end, { silent = true, desc = "move to last line of paragraph" })
 vim.keymap.set("n", "(", jump_to_paragraph_start, { silent = true, desc = "move to last line of paragraph" })
 vim.keymap.set("n", ")", jump_to_paragraph_end, { silent = true, desc = "move to last line of paragraph" })
 
