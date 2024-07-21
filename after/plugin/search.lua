@@ -70,9 +70,9 @@ telescope.setup({
 
 require("which-key").add({ "t", group = "[t]elescope search" })
 
-vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalFloat" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.near_black, fg = colors.purple })
-vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.purple })
-vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.gray, fg = colors.yellow, bold = true })
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = colors.near_black, fg = colors.purple, bold = true })
-vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = colors.near_black, fg = colors.purple, bold = true })
+-- vim.api.nvim_set_hl(0, "TelescopeNormal", { link = "NormalFloat" })
+-- vim.api.nvim_set_hl(0, "TelescopeBorder", { bg = colors.near_black, fg = colors.purple })
+-- vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.purple })
+-- vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.gray, fg = colors.yellow, bold = true })
+-- vim.api.nvim_set_hl(0, "TelescopePromptBorder", { bg = colors.near_black, fg = colors.purple, bold = true })
+-- vim.api.nvim_set_hl(0, "TelescopePromptTitle", { bg = colors.near_black, fg = colors.purple, bold = true })
