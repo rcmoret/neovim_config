@@ -151,6 +151,7 @@ create_link("rubyConditional", "RedUnderline")
 vim.api.nvim_set_hl(0, "@lsp.type.variable.ruby", { })
 vim.api.nvim_set_hl(0, "@lsp.type.method.ruby", { })
 vim.api.nvim_set_hl(0, "@lsp.type.parameter.ruby", { })
+vim.api.nvim_set_hl(0, "@lsp.type.class.ruby", { })
 -- -- OG Selection
 -- vim.api.nvim_set_hl(0, "CmpSelect", { fg = colors.teal, bg = colors.dark_gray })
 -- -- Match part of text
