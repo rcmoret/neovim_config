@@ -44,6 +44,14 @@ light_switch.register({
   default = "on",
 })
 
+require("luasnip.loaders.from_vscode").load({
+  include = { "ruby", "eruby", "javascript" },
+  paths = {
+    "~/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    "~/repos/nvim-sandbox/rusty-snip"
+  }
+})
+
 cmp.setup({
   enabled = function()
     local context = require("cmp.config.context")
@@ -75,6 +83,7 @@ cmp.setup({
     ["<PageUp>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert, count = 5 },
     ["<C-u>"] = cmp.mapping.scroll_docs(-4),
     ["<C-d>"] = cmp.mapping.scroll_docs(4),
+    ["<C-e>"] = cmp.mapping.abort(),
     ["<C-y>"] = cmp.mapping(
       cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Insert,
@@ -138,14 +147,6 @@ vim.keymap.set({ "i", "s" }, "<C-j>", function()
   end
 end, { silent = true })
 
-require("luasnip.loaders.from_vscode").load({
-  -- include = { "ruby", "eruby" },
-  include = { "ruby", "eruby", "javascript" },
-  paths = {
-    "~/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    "~/repos/rusty-snip"
-  }
-})
 
 -- vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = "#EED8DA", bg = colors.float_bg })
 -- vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = "#EED8DA", bg = colors.float_bg })
