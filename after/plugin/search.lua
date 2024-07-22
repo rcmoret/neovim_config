@@ -7,11 +7,8 @@ telescope.load_extension("tailiscope")
 
 local colors = require("config.rusty-scheme")
 
-vim.keymap.set("n", "<C-p>", function()
-  vim.notify("Control + 'p' is deprecated; it's 't' now", vim.log.levels.WARN)
-  builtin.git_files()
-end, { desc = "Fuzzy Find Files (git)" })
-vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
+vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
+-- vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
 
 vim.keymap.set("n", "ta", builtin.autocommands, { desc = "[t]elescope search in [a]utocommands" })
 vim.keymap.set("n", "tb", builtin.buffers, { desc = "[t]elescope search in [b]uffers" })
@@ -73,15 +70,20 @@ telescope.setup({
         ["<C-s>"] = toggle_selectbar,
         ["<PageDown>"] = actions.preview_scrolling_down,
         ["<PageUp>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
       },
       n = {
         ["<C-c>"] = "close",
         ["<PageDown>"] = actions.preview_scrolling_down,
         ["<PageUp>"] = actions.preview_scrolling_up,
-        ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
       },
-    }
+    },
+    pickers ={
+      buffers = {
+        mappings ={
+          ["<C-d>"] = actions.delete_buffer + actions.move_to_top
+        }
+      }
+    },
   }
 })
 
