@@ -32,8 +32,13 @@ local column_number = function()
   return "Col: " .. vim.fn.virtcol('.')
 end
 local branch_abbr = function()
-  local short_branch = vim.fn.system("git branch --show-current | cut -d '/' -f3 | tr -cd '[:alnum:]._-'")
-  return short_branch .. " " ..icons.git.conflict
+  local is_git_dir = vim.fn.system("[ -d .git ] && echo 1 || echo 0") == "1"
+  if is_git_dir then
+    local short_branch = vim.fn.system("git branch --show-current | cut -d '/' -f3 | tr -cd '[:alnum:]._-'")
+    return short_branch .. " " ..icons.git.conflict
+  else
+    return ""
+  end
 end
 
 require("lualine").setup({
