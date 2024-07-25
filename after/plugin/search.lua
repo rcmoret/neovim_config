@@ -7,8 +7,7 @@ telescope.load_extension("tailiscope")
 
 local colors = require("config.rusty-scheme")
 
-vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
--- vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
+vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
 
 vim.keymap.set("n", "ta", builtin.autocommands, { desc = "[t]elescope search in [a]utocommands" })
 vim.keymap.set("n", "tb", builtin.buffers, { desc = "[t]elescope search in [b]uffers" })
@@ -17,7 +16,7 @@ vim.keymap.set("n", "td", telescope.extensions.dir.live_grep, { desc = "[t]elesc
 vim.keymap.set("n", "tf", builtin.find_files, { desc = "[t]elescope search for [f]iles (all)" })
 vim.keymap.set(
   "n",
-  "<leader>tg",
+  "tg",
   telescope.extensions.live_grep_args.live_grep_args,
   { desc = "[t]elescope [g]rep (with args)" }
 )
@@ -77,14 +76,16 @@ telescope.setup({
         ["<PageUp>"] = actions.preview_scrolling_up,
       },
     },
-    pickers ={
-      buffers = {
-        mappings ={
-          ["<C-d>"] = actions.delete_buffer + actions.move_to_top
+  },
+  pickers ={
+    buffers = {
+      mappings ={
+        i = {
+          ["<C-x>"] = "delete_buffer"
         }
       }
-    },
-  }
+    }
+  },
 })
 
 require("which-key").add({ "t", group = "[t]elescope search" })
