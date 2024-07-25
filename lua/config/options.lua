@@ -94,3 +94,11 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
+
+vim.api.nvim_create_autocmd('FocusLost', {
+  group = vim.api.nvim_create_augroup('FocusLostStuff', { clear = true }),
+  callback = function()
+    vim.cmd.stopinsert()
+    vim.cmd.wall { mods = { silent = true } }
+  end,
+})
