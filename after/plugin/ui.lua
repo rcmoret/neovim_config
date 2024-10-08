@@ -32,10 +32,17 @@ local column_number = function()
   return "Col: " .. vim.fn.virtcol('.')
 end
 local branch_abbr = function()
-  local is_git_dir = vim.fn.system("[ -d .git ] && echo 1 || echo 0") == "1"
-  if is_git_dir then
+  -- local is_git_dir = vim.fn.system("[ -d .git ]")  == 0
+  -- local is_git_dir = vim.api.nvim_command_output("git rev-parse --is-inside-work-tree") == "true"
+  local function is_git_repo()
+    local _ = vim.fn.system("git rev-parse --is-inside-work-tree")
+
+    return vim.v.shell_error == 0
+  end
+
+  if is_git_repo() then
     local short_branch = vim.fn.system("git branch --show-current | cut -d '/' -f3 | tr -cd '[:alnum:]._-'")
-    return short_branch .. " " ..icons.git.conflict
+    return short_branch .. " " .. icons.git.conflict
   else
     return ""
   end
@@ -79,7 +86,7 @@ require("lualine").setup({
     lualine_z = {
       { line_number },
       { column_number },
-      { "datetime", style = "%l:%M"  }
+      { "datetime",   style = "%l:%M" }
     },
   },
   inactive_sections = {

@@ -1,4 +1,5 @@
 local colors = require("config.rusty-scheme")
+-- vim.cmd.colorscheme("tokyonight-day")
 vim.cmd.colorscheme("rusty-scheme")
 
 local set_hl = function(name, opts)

@@ -95,12 +95,14 @@ vim.keymap.set("v", "p", [["_dp]], { silent = true })
 vim.keymap.set("v", "P", [["_dP]], { silent = true })
 vim.keymap.set("n", "(", jump_to_paragraph_start, { silent = true, desc = "move to last line of paragraph" })
 vim.keymap.set("n", ")", jump_to_paragraph_end, { silent = true, desc = "move to last line of paragraph" })
+-- vim.api.nvim_set_keymap("n", "]]", ">>", { silent = true })
 vim.api.nvim_set_keymap("n", "<", "[", { silent = true })
 vim.api.nvim_set_keymap("n", ">", "]", { silent = true })
 
 -- SPLITS
 vim.keymap.set("n", "|", "<cmd>vs<CR>", { desc = "vertical split" })
 vim.keymap.set("n", [[\]], "<cmd>sp<CR>", { desc = "horizontal split" })
+vim.keymap.set("n", "<Leader>j", "<cmd>! pbpaste | jq >> %<CR>", { desc = "paste formatted [j]son" })
 
 -- COPY / PASTE
 vim.keymap.set("v", "<Leader>c", [["+y]], { desc = "[c]opy to clipboard" })

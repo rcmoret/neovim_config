@@ -45,7 +45,7 @@ light_switch.register({
 })
 
 require("luasnip.loaders.from_vscode").load({
-  include = { "ruby", "eruby", "javascript" },
+  include = { "ruby", "eruby" },
   paths = {
     "~/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     "~/repos/nvim-sandbox/rusty-snip"
@@ -67,7 +67,6 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "copilot" },
     {
       name = "buffer",
       option = {
@@ -75,6 +74,7 @@ cmp.setup({
         keyword_length = 3,
       },
     },
+    { name = "copilot" },
   },
   mapping = {
     ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
