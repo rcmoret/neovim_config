@@ -67,7 +67,6 @@ cmp.setup({
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
-    { name = "copilot" },
     {
       name = "buffer",
       option = {
@@ -123,7 +122,6 @@ cmp.setup({
 cmp.setup.filetype({ "sql" }, {
   sources = {
     { name = "vim-dadbod-completion" },
-    { name = "copilot" },
     { name = "buffer" }
   },
 })
