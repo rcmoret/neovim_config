@@ -4,8 +4,7 @@ telescope.load_extension("dir")
 telescope.load_extension("git_worktree")
 telescope.load_extension("live_grep_args")
 telescope.load_extension("tailiscope")
-
-local colors = require("config.rusty-scheme")
+telescope.load_extension("noice")
 
 vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
 
@@ -13,6 +12,7 @@ vim.keymap.set("n", "ta", builtin.autocommands, { desc = "[t]elescope search in 
 vim.keymap.set("n", "tb", builtin.buffers, { desc = "[t]elescope search in [b]uffers" })
 vim.keymap.set("n", "tc", builtin.command_history, { desc = "[t]elescope search [c]ommand history" })
 vim.keymap.set("n", "td", telescope.extensions.dir.live_grep, { desc = "[t]elescope search in [d]irectories" })
+vim.keymap.set("n", "tn", "<cmd>Noice telescope<CR>", { desc = "[t]elescope search in [n]otifications" })
 vim.keymap.set("n", "tf", builtin.find_files, { desc = "[t]elescope search for [f]iles (all)" })
 vim.keymap.set(
   "n",
@@ -38,25 +38,6 @@ vim.keymap.set("n", "tt", "<cmd>Telescope tailiscope<CR>", { desc = "[t]elescope
 vim.keymap.set("n", "tR", builtin.registers, { desc = "[t]elescope [R]egisters" })
 vim.keymap.set("n", "tw", builtin.grep_string, { desc = "[t]elescope search for current [w]ord in working directory" })
 
-local select_highlight_notify = function(msg)
-  vim.notify("[Telescope]: " .. msg)
-end
-
-vim.g.telescope_select_highlight_mode = "default"
-local toggle_selectbar = function()
-  if vim.g.telescope_select_highlight_mode == "default" then
-    select_highlight_notify("switching to light select bar")
-    vim.g.telescope_select_highlight_mode = "light"
-    vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.off_white, fg = colors.purple, bold = true })
-    vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.purple })
-  else
-    select_highlight_notify("switching to default select bar")
-    vim.g.telescope_select_highlight_mode = "default"
-    vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = colors.dark_gray, fg = colors.teal, bold = true })
-    vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.teal })
-  end
-end
-
 local actions = require("telescope.actions")
 
 telescope.setup({
@@ -66,7 +47,6 @@ telescope.setup({
     },
     mappings = {
       i = {
-        ["<C-s>"] = toggle_selectbar,
         ["<PageDown>"] = actions.preview_scrolling_down,
         ["<PageUp>"] = actions.preview_scrolling_up,
       },
