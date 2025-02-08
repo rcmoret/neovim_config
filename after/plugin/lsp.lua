@@ -55,7 +55,7 @@ local tw_setup = function()
 end
 
 require("mason-lspconfig").setup({
-  ensure_installed = { "tsserver", "rust_analyzer", "ruby_lsp", "rubocop", "tailwindcss" },
+  ensure_installed = { "ts_ls", "rust_analyzer", "ruby_lsp", "rubocop", "tailwindcss" },
   handlers = {
     function(server_name)
       require("lspconfig")[server_name].setup({
