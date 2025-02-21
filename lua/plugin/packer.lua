@@ -161,5 +161,6 @@ return require("packer").startup(function(use)
   use "j-hui/fidget.nvim"
 
   -- My very own colorscheme
-  use "~/repos/nvim-sandbox/rusty-scheme"
+  -- use "~/repos/nvim-sandbox/rusty-scheme"
+  use "rcmoret/rusty-scheme.nvim"
 end)

@@ -27,27 +27,3 @@ return {
   off_white = "#c0caf5",   -- /* default foreground colour */
   darkest_blue = "#1a1b26",   -- /* default background colour */
 };
--- return {
---   black= "#000000",
---   dark_blue= "#3a86ff",
---   dark_gray= "#636d83",
---   dark_green= "#197046",
---   dark_orange= "#f48c06",
---   dark_purple= "#7781da",
---   darkest_blue= "#000018",
---   float_bg= "#0f0f0f",
---   gray= "#adb5bd",
---   light_blue= "#00ffff",
---   light_gray= "#bdc3ca",
---   light_green= "#06d6a0",
---   light_orange= "#ff956b",
---   light_red= "#ff6682",
---   light_yellow= "#f4ff7a",
---   off_white= "#e0e0e0",
---   pale= "#ce9888",
---   purple= "#a081fe",
---   red= "#ff2e3f",
---   teal= "#00c0ff",
---   white= "#ffffff",
---   yellow= "#ffd60a",
--- }

@@ -55,7 +55,7 @@ local tw_setup = function()
 end
 
 require("mason-lspconfig").setup({
-  ensure_installed = { "ts_ls", "rust_analyzer", "ruby_lsp", "rubocop", "tailwindcss" },
+  ensure_installed = { "ts_ls", "rust_analyzer", "ruby_lsp", "tailwindcss" }, -- "rubocop", 
   handlers = {
     function(server_name)
       require("lspconfig")[server_name].setup({
@@ -70,6 +70,12 @@ require("lspconfig.ui.windows").default_options.border = "rounded"
 
 require("which-key").add({ "<Leader>l", group = "[l]sp commands" })
 
+-- local util = require "formatter.util"
+local defaults = require "formatter.defaults"
+local util = require "formatter.util"
+
+local callformatter = util.copyf(defaults.prettier)
+
 vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "[g]o to [d]efinition (LSP)" })
 vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, { desc = "[g]o to References (LSP)" })
 vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, { desc = "go to next [d]iagnostic (LSP)" })
@@ -78,6 +84,7 @@ vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "quick inf
 vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "[l]sp code [a]ctions" })
 vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, { desc = "[l]sp [d]iagnostics" })
 vim.keymap.set("n", "<Leader>lf", function() vim.lsp.buf.format() end, { desc = "[l]sp [f]ormat file" })
+vim.keymap.set("n", "<Leader>lz", callformatter, { desc = "[l]sp [F]ormat file" })
 vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "[l]sp [i]nfo" })
 vim.keymap.set("n", "<leader>ll", "<cmd>LspInfo<CR>", { desc = "[l]sp [l]ogs" })
 vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "[l]sp [r]ename" })
@@ -152,10 +159,6 @@ require("fidget").setup({
     }
   }
 })
-
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "yellow", italic = true })
-vim.api.nvim_set_hl(0, "DiagnosticHint", { fg = "yellow", italic = true })
-vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { fg = "yellow", italic = true })
 
 light_switch.register({
   code = "twr",

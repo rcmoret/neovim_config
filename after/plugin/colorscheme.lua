@@ -1,4 +1,4 @@
-local colors = require("config.rusty-scheme")
+local light_red = "#f7768e"
 vim.cmd.colorscheme("rusty-scheme")
 
 local set_hl = function(name, opts)
@@ -9,8 +9,8 @@ local create_link = function(target, link_to)
   set_hl(target, { link = link_to })
 end
 
-set_hl("RedUnderline", { fg = colors.light_red, underline = true })
-create_link("rubyConditional", "RedUnderline")
+-- set_hl("RedUnderline", { fg = light_red, underline = true })
+-- create_link("rubyConditional", "RedUnderline")
 
 -- keep these / don't change!
 vim.api.nvim_set_hl(0, "@lsp.type.variable.ruby", { })

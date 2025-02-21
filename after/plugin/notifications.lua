@@ -15,7 +15,7 @@ noice.setup({
   },
   notify = {
     enabled = true,
-    timeout = 200,
+    timeout = 800,
     view = "notify"
   },
   lsp = {
