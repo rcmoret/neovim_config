@@ -14,10 +14,8 @@ return require("packer").startup(function(use)
       require("alpha").setup(require("alpha.themes.startify").config)
     end
   })
-  -- COPILOT
-  use "zbirenbaum/copilot.lua"
-  -- COPILOT-CMP
-  use "zbirenbaum/copilot-cmp"
+  -- CODE-COMPANION
+  use "olimorris/codecompanion.nvim"
   -- DIR-TELESCOPE
   use({
     "princejoogie/dir-telescope.nvim",
