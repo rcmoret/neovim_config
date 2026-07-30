@@ -1,4 +1,8 @@
+-- Editor options. Loaded first, before lazy.nvim, so <Leader> is defined
+-- before any plugin registers a mapping against it.
+
 vim.g.mapleader = " "
+
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.signcolumn = "yes"
@@ -18,7 +22,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.autoread = true
 vim.opt.mouse = ""
-vim.opt.iskeyword:append({"-", "@"})
+vim.opt.iskeyword:append({ "-", "@" })
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
@@ -36,9 +40,7 @@ vim.opt.listchars = {
   trail = "·",
 }
 
-local light_switch = require("plugin.light_switch")
-
--- #832913
+local light_switch = require("lib.light_switch")
 
 light_switch.register({
   code = "rel",
@@ -64,46 +66,4 @@ light_switch.register({
   disable = function()
     vim.opt.wrap = false
   end
-})
-
-vim.api.nvim_create_autocmd("BufWinEnter", {
-  group = vim.api.nvim_create_augroup("Quick Fix Override", { clear = false }),
-  desc = "allow customization of the quickfix window",
-  pattern = "quickfix",
-  callback = function()
-    vim.opt.relativenumber = false
-  end,
-})
-
-vim.api.nvim_create_autocmd(
-  { "TextYankPost" },
-  {
-    desc = "Highlight when yanking text",
-    group = vim.api.nvim_create_augroup("Highlight-yank", { clear = true }),
-    callback = function()
-      vim.highlight.on_yank()
-    end,
-  }
-)
-
-vim.api.nvim_create_autocmd(
-  { "FocusGained", "BufEnter", "CursorHold" },
-  {
-    callback = function()
-      vim.api.nvim_command("checktime")
-    end
-  }
-)
-
-vim.api.nvim_create_autocmd('FocusLost', {
-  group = vim.api.nvim_create_augroup('FocusLostStuff', { clear = true }),
-  callback = function()
-    vim.cmd.stopinsert()
-    vim.cmd.wall { mods = { silent = true } }
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = "*.svelte",
-  command = "set syntax=html"
 })

@@ -1,4 +1,9 @@
-local expand_array = function()
+-- Expand a collapsed array / hash / HTML element onto multiple lines.
+-- Keymaps live in lua/core/keymaps.lua.
+
+local M = {}
+
+function M.expand_array()
   local bufnr = vim.api.nvim_get_current_buf()
   local cursor = vim.api.nvim_win_get_cursor(0)
   local cur_row = cursor[1] - 1  -- 0-indexed
@@ -88,7 +93,7 @@ local expand_array = function()
   vim.api.nvim_buf_set_lines(bufnr, open_row, close_row + 1, false, new_lines)
 end
 
-local expand_hash = function()
+function M.expand_hash()
   local bufnr = vim.api.nvim_get_current_buf()
   local cursor = vim.api.nvim_win_get_cursor(0)
   local cur_row = cursor[1] - 1  -- 0-indexed
@@ -200,7 +205,7 @@ local expand_hash = function()
   vim.api.nvim_buf_set_lines(bufnr, open_row, close_row + 1, false, new_lines)
 end
 
-local expand_html = function()
+function M.expand_html()
   local bufnr = vim.api.nvim_get_current_buf()
   local cursor = vim.api.nvim_win_get_cursor(0)
   local cur_row = cursor[1] - 1
@@ -362,6 +367,4 @@ local expand_html = function()
   vim.api.nvim_buf_set_lines(bufnr, open_row, close_row + 1, false, new_lines)
 end
 
-vim.keymap.set("n", "<Leader>fe", expand_array, { desc = "[f]ormat [e]xpand array" })
-vim.keymap.set("n", "<Leader>fh", expand_hash, { desc = "[f]ormat expand [h]ash" })
-vim.keymap.set("n", "<Leader>ft", expand_html, { desc = "[f]ormat expand html [t]ags" })
+return M

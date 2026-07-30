@@ -277,4 +277,4 @@ M.icons = {
   },
 }
 
-return M
+return M.icons

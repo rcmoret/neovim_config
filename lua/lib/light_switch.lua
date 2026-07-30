@@ -2,15 +2,14 @@ local settings = {}
 
 local toggleable = {}
 
-local light_switch = function ()
-  local prompt = ""
+local prompt = function ()
+  local menu = ""
   for key, value in pairs(toggleable) do
-    prompt = prompt .. string.format("%-5s %-40s %4s", key, value.desc, settings[key]) .. "\n"
+    menu = menu .. string.format("%-5s %-40s %4s", key, value.desc, settings[key]) .. "\n"
   end
 
-  -- local bufnr = vim.api.nvim_get_current_buf()
-  vim.notify(prompt)
-  local option = vim.fn.input(prompt)
+  vim.notify(menu)
+  local option = vim.fn.input(menu)
 
   local configuration = toggleable[option]
 
@@ -21,8 +20,6 @@ local light_switch = function ()
     toggleable[option].toggle()
   end
 end
-
-vim.keymap.set("n", "<Leader>T", light_switch, { desc = "light-switch super [T]oggle" })
 
 local is_enabled = function (code)
   return settings[code] == "on"
@@ -67,5 +64,6 @@ end
 
 return {
   is_enabled = is_enabled,
+  prompt = prompt,
   register = register
 }
