@@ -4,68 +4,64 @@ vim.cmd [[packadd packer.nvim]]
 return require("packer").startup(function(use)
   -- PACKER
   use "wbthomason/packer.nvim"
+  use {
+    "mfussenegger/nvim-dap",
+    -- config = function() require("dap-ruby").setup() end,
+  }
 
   -- ACK
   use "mileszs/ack.vim"
   -- ALPHA
-  use({
+  use {
     "goolord/alpha-nvim",
-    config = function()
-      require("alpha").setup(require("alpha.themes.startify").config)
-    end
-  })
+    config = function() require("alpha").setup(require("alpha.themes.startify").config) end,
+  }
   -- CODE-COMPANION
   use "olimorris/codecompanion.nvim"
   -- DIR-TELESCOPE
-  use({
+  use {
     "princejoogie/dir-telescope.nvim",
-    requires = { "nvim-telescope/telescope.nvim" }
-  })
+    requires = { "nvim-telescope/telescope.nvim" },
+  }
   -- FRIENDLY-SNIPPETS
   use "rafamadriz/friendly-snippets"
   -- GITSIGNS
   use "lewis6991/gitsigns.nvim"
   -- GITWORKTREE
   use "ThePrimeagen/git-worktree.nvim"
-  -- HARPOON
-  use({
-    "ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    requires = { {"nvim-lua/plenary.nvim"} }
-  })
   -- INDENT-BLANKLINE
   use "lukas-reineke/indent-blankline.nvim"
   -- LUALINE
-  use({
+  use {
     "nvim-lualine/lualine.nvim",
     requires = {
       { "nvim-tree/nvim-web-devicons", opt = true },
-      { "lewis6991/gitsigns.nvim" }
-    }
-  })
+      { "lewis6991/gitsigns.nvim" },
+    },
+  }
   -- LUSH
   use "rktjmp/lush.nvim"
   -- NEO-TREE
-  use({
+  use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
-    }
-  })
+    },
+  }
   -- NOICE
-  use({
+  use {
     "folke/noice.nvim",
     requires = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
-      "mrded/nvim-lsp-notify"
-    }
-  })
+      "mrded/nvim-lsp-notify",
+    },
+  }
   -- NVIM-CMP
-  use({
+  use {
     "hrsh7th/nvim-cmp",
     requires = {
       "onsails/lspkind.nvim",
@@ -75,11 +71,11 @@ return require("packer").startup(function(use)
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
     },
-  })
+  }
   -- NVIM-HIGHLIGHT-COLORS
   use "brenoprata10/nvim-highlight-colors"
   -- NVIM-TMUX-NAVIGATION
-  use({
+  use {
     "alexghergh/nvim-tmux-navigation",
     config = function()
       require("nvim-tmux-navigation").setup {
@@ -90,10 +86,10 @@ return require("packer").startup(function(use)
           up = "<C-k>",
           right = "<C-l>",
           last_active = "<C-\\>",
-        }
+        },
       }
-    end
-  })
+    end,
+  }
   -- NVIM-TREESITTER
   use "nvim-treesitter/nvim-treesitter"
   -- NVIM-WEB-DEVICONS
@@ -101,13 +97,13 @@ return require("packer").startup(function(use)
   -- TAILISCOPE
   use "danielvolchek/tailiscope.nvim"
   -- TELESCOPE
-  use({
-    "nvim-telescope/telescope.nvim", tag = "0.1.6",
+  use {
+    "nvim-telescope/telescope.nvim",
     requires = {
-      {"nvim-lua/plenary.nvim"},
+      { "nvim-lua/plenary.nvim" },
       { "nvim-telescope/telescope-live-grep-args.nvim" },
-    }
-  })
+    },
+  }
   -- TOKYONIGHT
   use "folke/tokyonight.nvim"
   -- UNDOTREE
@@ -117,13 +113,15 @@ return require("packer").startup(function(use)
   -- VIM-COMMENTARY
   use "tpope/vim-commentary"
   -- VIM-DADBOD
-  use({
+  use {
     "tpope/vim-dadbod",
     requires = {
       "kristijanhusak/vim-dadbod-completion",
       "kristijanhusak/vim-dadbod-ui",
-    }
-  })
+    },
+  }
+  -- VIM-CRYSTAL
+  use "vim-crystal/vim-crystal"
   -- VIM-ENDWISE
   use "tpope/vim-endwise"
   -- VIM-FUGITIVE
@@ -139,17 +137,18 @@ return require("packer").startup(function(use)
   -- VIM-UNIMPAIRED
   use "tpope/vim-unimpaired"
   -- WHICH-KEY
-  use({
+  use {
     "folke/which-key.nvim",
     requires = {
-      "echasnovski/mini.icons"
-    }
-  })
+      "echasnovski/mini.icons",
+    },
+  }
+
+  -- CONFORM (formatting)
+  use "stevearc/conform.nvim"
 
   -- LSP
   use "neovim/nvim-lspconfig"
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
   -- use "mfussenegger/nvim-lint"
   -- use "WhoIsSethDaniel/toggle-lsp-diagnostics.nvim"
   -- use "akinsho/flutter-tools.nvim"
@@ -159,6 +158,6 @@ return require("packer").startup(function(use)
   use "j-hui/fidget.nvim"
 
   -- My very own colorscheme
-  -- use "~/repos/nvim-sandbox/rusty-scheme"
-  use "rcmoret/rusty-scheme.nvim"
+  use "~/repos/nvim-sandbox/rusty-scheme"
+  -- use "rcmoret/rusty-scheme.nvim"
 end)

@@ -107,8 +107,24 @@ vim.keymap.set("v", "<Leader>c", [["+y]], { desc = "[c]opy to clipboard" })
 vim.keymap.set({ "v", "n" }, "<Leader>p", [["+p]], { desc = "[p]aste from clipboard" })
 vim.keymap.set({ "v", "n" }, "<Leader>P", [["+P]], { desc = "[P]aste from clipboard (put before)" })
 vim.keymap.set({ "v", "n" }, "<Leader>x", [["+x]], { desc = "[x] - cut to clipboard" })
-vim.keymap.set("n", "<Leader>d", "yyp", { desc = "[d]uplicate current line" })
-vim.keymap.set("n", "<Leader>D", "yypv=gk", { desc = "[D]up current realign below", silent = true })
+local duplicate_line = function()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  vim.api.nvim_buf_set_lines(0, row, row, false, { line })
+  vim.api.nvim_win_set_cursor(0, { row + 1, col })
+end
+
+local duplicate_line_realign = function()
+  local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  vim.api.nvim_buf_set_lines(0, row, row, false, { line })
+  vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
+  vim.cmd("normal! ==")
+  vim.api.nvim_win_set_cursor(0, { row, col })
+end
+
+vim.keymap.set("n", "<Leader>d", duplicate_line, { desc = "[d]uplicate current line", silent = true })
+vim.keymap.set("n", "<Leader>D", duplicate_line_realign, { desc = "[D]up current realign below", silent = true })
 
 
 -- SUBSTITUTION
@@ -136,9 +152,56 @@ vim.keymap.set("n", "<Leader>rz", "<C-w>_<C-w>|", { desc = "full si[z]e" })
 vim.keymap.set("n", "<Leader>rZ", "<C-w>=", { desc = "even si[Z]e" })
 vim.keymap.set("n", "<Leader>re", "<C-w>=", { desc = "resize buffers [=] evenly" })
 
+-- CUSTOM TEXT OBJECTS
+local select_pipe_textobj = function(inner)
+  local row, cur_col = unpack(vim.api.nvim_win_get_cursor(0))
+  local line = vim.api.nvim_get_current_line()
+  local col = cur_col + 1  -- 1-indexed
+
+  -- Search backward for opening |, skipping if cursor is already on one
+  local open_col
+  for c = (line:sub(col, col) == "|" and col - 1 or col), 1, -1 do
+    if line:sub(c, c) == "|" then
+      open_col = c
+      break
+    end
+  end
+  -- If cursor is on | and nothing found before it, treat it as the opening
+  if not open_col and line:sub(col, col) == "|" then
+    open_col = col
+  end
+
+  if not open_col then return end
+
+  -- Search forward for closing | from after the opening
+  local close_col
+  for c = open_col + 1, #line do
+    if line:sub(c, c) == "|" then
+      close_col = c
+      break
+    end
+  end
+
+  if not close_col then return end
+
+  -- Convert to 0-indexed for nvim API
+  local s = inner and open_col or (open_col - 1)
+  local e = inner and (close_col - 2) or (close_col - 1)
+
+  if s > e then return end
+
+  vim.api.nvim_win_set_cursor(0, { row, s })
+  vim.cmd("normal! v")
+  vim.api.nvim_win_set_cursor(0, { row, e })
+end
+
+vim.keymap.set({ "x", "o" }, "i|", function() select_pipe_textobj(true) end, { desc = "inner pipe text object" })
+vim.keymap.set({ "x", "o" }, "a|", function() select_pipe_textobj(false) end, { desc = "around pipe text object" })
+
 wk.add({
   { "<Leader><Leader>", group = "vi remaps" },
   { "<Leader>b", group ="[b]uffer" },
+  { "<Leader>f", group = "[f]ormat" },
   { "<Leader>r", group = "[r]esize buffers" },
   { "<Leader>t", group = "[t]ab commands" },
 })

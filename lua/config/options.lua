@@ -102,3 +102,8 @@ vim.api.nvim_create_autocmd('FocusLost', {
     vim.cmd.wall { mods = { silent = true } }
   end,
 })
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*.svelte",
+  command = "set syntax=html"
+})

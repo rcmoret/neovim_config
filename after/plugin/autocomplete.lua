@@ -45,10 +45,10 @@ light_switch.register({
 })
 
 require("luasnip.loaders.from_vscode").load({
-  include = { "ruby", "eruby", "javascript" },
+  include = { "ruby", "eruby", "javascript", "typescript", "typescriptreact" },
   paths = {
+    "~/repos/nvim-sandbox/rusty-snip",
     "~/.local/share/nvim/site/pack/packer/start/friendly-snippets",
-    "~/repos/nvim-sandbox/rusty-snip"
   }
 })
 

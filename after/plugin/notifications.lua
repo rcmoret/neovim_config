@@ -6,22 +6,45 @@ require("notify").setup({
   background_colour = colors.white,
   render = "simple",
   stages = "fade_in_slide_out",
-  timeout = 200
+  timeout = 3000  -- Changed from 200ms to 3000ms (3 seconds)
 })
 
 noice.setup({
   cmdline = {
     view = "cmdline_popup"
   },
+  messages = {
+    enabled = true,
+    view = "notify",
+    view_error = "notify",
+    view_warn = "notify",
+    view_history = "messages",
+    view_search = "virtualtext",
+  },
+  popupmenu = {
+    enabled = false,  -- Disable noice popupmenu to use default vim.ui.select
+  },
   notify = {
     enabled = true,
-    timeout = 800,
+    timeout = 3000,
     view = "notify"
   },
   lsp = {
     progress = {
       enabled = false
-    }
+    },
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
+    },
+  },
+  presets = {
+    bottom_search = false,
+    command_palette = false,  -- Disable command palette to fix rendering
+    long_message_to_split = true,
+    inc_rename = false,
+    lsp_doc_border = true,
   },
   routes = {
     {
