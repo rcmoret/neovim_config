@@ -2,7 +2,6 @@
 -- which-key group labels are declared in lua/plugins/which-key.lua.
 
 local editor = require("lib.editor")
-local expand = require("lib.expand")
 local light_switch = require("lib.light_switch")
 
 -- PARAGRAPH MOTIONS
@@ -87,11 +86,6 @@ vim.keymap.set({ "x", "o" }, "i|", function() editor.select_pipe_textobj(true) e
   { desc = "inner pipe text object" })
 vim.keymap.set({ "x", "o" }, "a|", function() editor.select_pipe_textobj(false) end,
   { desc = "around pipe text object" })
-
--- EXPAND COLLAPSED STRUCTURES
-vim.keymap.set("n", "<Leader>fe", expand.expand_array, { desc = "[f]ormat [e]xpand array" })
-vim.keymap.set("n", "<Leader>fh", expand.expand_hash, { desc = "[f]ormat expand [h]ash" })
-vim.keymap.set("n", "<Leader>ft", expand.expand_html, { desc = "[f]ormat expand html [t]ags" })
 
 -- LIGHT SWITCH
 vim.keymap.set("n", "<Leader>T", light_switch.prompt, { desc = "light-switch super [T]oggle" })

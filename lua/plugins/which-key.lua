@@ -21,7 +21,6 @@ return {
     wk.add({
       { "<Leader><Leader>", group = "vi remaps" },
       { "<Leader>b", group = "[b]uffer" },
-      { "<Leader>f", group = "[f]ormat" },
       { "<Leader>g", group = "[g]it helpers" },
       { "<Leader>k", group = "la[z]y pkg manager" },
       { "<Leader>l", group = "[l]sp commands" },
