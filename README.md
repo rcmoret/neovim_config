@@ -1,7 +1,8 @@
 # nvim
 
-Personal Neovim config. Requires **Neovim 0.11+** (uses the `vim.lsp.config` API
-and `vim.o.winborder`). Plugins are managed by
+Personal Neovim config. Requires **Neovim 0.12+** — 0.11 is enough for the
+`vim.lsp.config` API and `vim.o.winborder`, but nvim-treesitter's `main` branch
+hard-requires 0.12. Plugins are managed by
 [lazy.nvim](https://github.com/folke/lazy.nvim), which bootstraps itself on
 first launch.
 
@@ -57,6 +58,7 @@ None of these are installed by the config; language servers are expected on
 | `rg` | telescope grep | `brew install ripgrep` |
 | `prettier` | conform, JS/TS/CSS/JSON/YAML/MD | `npm i -g prettier` |
 | `stylua` | conform, lua | `brew install stylua` |
+| `tree-sitter` | building treesitter parsers | `brew install tree-sitter-cli` |
 | `lua-language-server` | `lua_ls` | `brew install lua-language-server` |
 | `typescript-language-server` | `ts_ls` | `npm i -g typescript-language-server` |
 | `rust-analyzer` | `rust_analyzer` | `rustup component add rust-analyzer` |
@@ -84,6 +86,26 @@ cmd = { vim.fn.expand "~/.local/bin/mise", "exec", "--", "ruby-lsp" }
 That indirection costs a couple of seconds — `ruby_lsp` typically attaches
 around 2s after opening a Ruby file, so give it a moment before assuming it is
 broken.
+
+Note that `brew install tree-sitter` is **not** enough — that formula ships only
+the library. The binary comes from the separate `tree-sitter-cli` formula, and
+the treesitter docs specifically warn against the npm build.
+
+## Treesitter
+
+Pinned to the `main` branch, which is a rewrite rather than a newer version of
+`master`. There is no `ensure_installed` / `highlight` / `indent` options table:
+the parser list lives at the top of `lua/plugins/treesitter.lua` and is passed
+to `install()`, while highlighting and indentation are started per buffer by a
+`FileType` autocmd.
+
+Indentation is only enabled for languages that ship an `indents` query. Without
+one, treesitter's `get_indent` never reaches its autoindent fallback and returns
+0, which flattens the file rather than leaving indentation alone — so the
+autocmd checks for the query before setting `indentexpr`.
+
+Adding a language means adding it to `ensure_installed` and restarting, or
+running `:TSInstall <lang>`.
 
 ## Toggles
 
