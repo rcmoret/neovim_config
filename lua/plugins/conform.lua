@@ -27,12 +27,10 @@ return {
     format_on_save = function(bufnr)
       -- Skip formatting for any project with a .no-format file at its root
       local bufname = vim.api.nvim_buf_get_name(bufnr)
-      local bufdir = vim.fn.fnamemodify(bufname, ':h')
-      local no_format = vim.fn.findfile('.no-format', bufdir .. ';')
+      local bufdir = vim.fn.fnamemodify(bufname, ":h")
+      local no_format = vim.fn.findfile(".no-format", bufdir .. ";")
 
-      if no_format ~= '' then
-        return nil
-      end
+      if no_format ~= "" then return nil end
 
       return {
         timeout_ms = 500,

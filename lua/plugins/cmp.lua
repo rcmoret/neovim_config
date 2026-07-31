@@ -11,13 +11,13 @@ return {
   },
   event = { "InsertEnter", "CmdlineEnter" },
   config = function()
-    local light_switch = require("lib.light_switch")
+    local light_switch = require "lib.light_switch"
     vim.opt.completeopt = { "menu", "menuone" }
     vim.opt.shortmess:append "c"
 
-    local cmp = require("cmp")
+    local cmp = require "cmp"
 
-    local icons = require("theme.icons")
+    local icons = require "theme.icons"
     local match_exp = [[\k\+]]
 
     local cmp_kinds = {
@@ -46,33 +46,33 @@ return {
       Event = "  ",
       Operator = "  ",
       TypeParameter = "  ",
-      LSP = icons.ui.lsp_hint .. "  "
+      LSP = icons.ui.lsp_hint .. "  ",
     }
 
-    light_switch.register({
+    light_switch.register {
       code = "cmp",
       desc = "Code completion",
       default = "on",
-    })
+    }
 
-    require("luasnip.loaders.from_vscode").load({
+    require("luasnip.loaders.from_vscode").load {
       include = { "ruby", "eruby", "javascript", "typescript", "typescriptreact" },
       paths = {
         "~/repos/nvim-sandbox/rusty-snip",
-        vim.fn.stdpath("data") .. "/lazy/friendly-snippets",
-      }
-    })
+        vim.fn.stdpath "data" .. "/lazy/friendly-snippets",
+      },
+    }
 
-    cmp.setup({
+    cmp.setup {
       enabled = function()
-        local context = require("cmp.config.context")
-        local is_comment = context.in_treesitter_capture("comment") == true or context.in_syntax_group("Comment")
+        local context = require "cmp.config.context"
+        local is_comment = context.in_treesitter_capture "comment" == true or context.in_syntax_group "Comment"
 
-        return light_switch.is_enabled("cmp") and vim.bo.buftype ~= "prompt" and not (is_comment)
+        return light_switch.is_enabled "cmp" and vim.bo.buftype ~= "prompt" and not is_comment
       end,
       view = {
         selection_order = "near_cursor",
-        entries = "custom"
+        entries = "custom",
       },
       sources = {
         { name = "nvim_lsp" },
@@ -102,17 +102,15 @@ return {
         ),
       },
       snippet = {
-        expand = function(args)
-          vim.snippet.expand(args.body)
-        end,
+        expand = function(args) vim.snippet.expand(args.body) end,
       },
       window = {
-        completion = cmp.config.window.bordered({
-          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpSelect,Search:CmpSelect'
-        }),
-        documentation = cmp.config.window.bordered({
-          winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpSelect,Search:None'
-        }),
+        completion = cmp.config.window.bordered {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpSelect,Search:CmpSelect",
+        },
+        documentation = cmp.config.window.bordered {
+          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:CmpSelect,Search:None",
+        },
       },
       formatting = {
         format = function(entry, vim_item)
@@ -125,34 +123,30 @@ return {
           vim_item.kind = (cmp_kinds[vim_item.kind] or "") .. vim_item.kind
 
           return vim_item
-        end
-      }
-    })
+        end,
+      },
+    }
 
     cmp.setup.filetype({ "sql" }, {
       sources = {
         { name = "vim-dadbod-completion" },
-        { name = "buffer" }
+        { name = "buffer" },
       },
     })
 
-    local ls = require("luasnip")
+    local ls = require "luasnip"
 
-    ls.config.set_config({
+    ls.config.set_config {
       history = false,
       updateevents = "TextChanged,TextChangedI",
-    })
+    }
 
     vim.keymap.set({ "i", "s" }, "<C-k>", function()
-      if ls.jumpable() then
-        ls.jump(1)
-      end
+      if ls.jumpable() then ls.jump(1) end
     end, { silent = true })
 
     vim.keymap.set({ "i", "s" }, "<C-j>", function()
-      if ls.jumpable(-1) then
-        ls.jump(-1)
-      end
+      if ls.jumpable(-1) then ls.jump(-1) end
     end, { silent = true })
   end,
 }

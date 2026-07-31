@@ -260,7 +260,6 @@ M.icons = {
     prompt_prefix = "󰋇 ",
     selection_caret = " ",
     tall_skinny_pipe = "｜",
-
   },
   git = {
     git = "󰊢 ",

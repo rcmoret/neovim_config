@@ -7,19 +7,19 @@ return {
   },
   event = "VeryLazy",
   config = function()
-    local noice = require("noice")
-    local colors = require("theme.palette")
+    local noice = require "noice"
+    local colors = require "theme.palette"
 
-    require("notify").setup({
+    require("notify").setup {
       background_colour = colors.near_black,
       render = "simple",
       stages = "fade_in_slide_out",
-      timeout = 3000
-    })
+      timeout = 3000,
+    }
 
-    noice.setup({
+    noice.setup {
       cmdline = {
-        view = "cmdline_popup"
+        view = "cmdline_popup",
       },
       messages = {
         enabled = true,
@@ -35,11 +35,11 @@ return {
       notify = {
         enabled = true,
         timeout = 3000,
-        view = "notify"
+        view = "notify",
       },
       lsp = {
         progress = {
-          enabled = false
+          enabled = false,
         },
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -63,13 +63,13 @@ return {
               { find = "more line" },
               { find = "fewer line" },
               { find = "lines yanked" },
-              { event = "msg_show", kind = "search_count" }
+              { event = "msg_show", kind = "search_count" },
             },
           },
           opts = { skip = true },
         },
       },
-    })
+    }
 
     -- ERROR
     vim.api.nvim_set_hl(0, "NotifyERRORBorder", { fg = colors.light_red, bg = colors.near_black })
@@ -105,13 +105,12 @@ return {
     vim.api.nvim_set_hl(0, "NotifyLogTitle", { link = "NormalFloat" })
 
     local test_notifications = function()
-      local prompt = ([[
+      local prompt = [[
   (1): default / info
   (2): warn
   (3): error
 
   ]]
-      )
       local choice = vim.fn.input(prompt)
       if choice == "1" then
         vim.notify("this is an informational message", vim.log.levels.INFO)
@@ -124,14 +123,16 @@ return {
       end
     end
 
-    vim.keymap.set("n", "<Leader>ne", function() noice.cmd("enable") end, { desc = "[n]otifications: [e]nable" })
-    vim.keymap.set("n", "<Leader>nd", function() noice.cmd("disable") end, { desc = "[n]otifications: [d]isable" })
-    vim.keymap.set("n", "<Leader>nh", function() noice.cmd("history") end, { desc = "[n]otifications: [h]istory" })
+    vim.keymap.set("n", "<Leader>ne", function() noice.cmd "enable" end, { desc = "[n]otifications: [e]nable" })
+    vim.keymap.set("n", "<Leader>nd", function() noice.cmd "disable" end, { desc = "[n]otifications: [d]isable" })
+    vim.keymap.set("n", "<Leader>nh", function() noice.cmd "history" end, { desc = "[n]otifications: [h]istory" })
     vim.keymap.set("n", "<Leader>nn", test_notifications, { desc = "[n]otifications: send [n]otifictions" })
-    vim.keymap.set("n", "<Leader>nt", function() noice.cmd("telescope") end,
-      { desc = "[n]otifications: history in [t]elescope" })
-    vim.keymap.set("n", "<Leader>ni", function()
-      vim.cmd("Inspect")
-    end, { desc = "[n]otify the result of [i]nspect" })
+    vim.keymap.set(
+      "n",
+      "<Leader>nt",
+      function() noice.cmd "telescope" end,
+      { desc = "[n]otifications: history in [t]elescope" }
+    )
+    vim.keymap.set("n", "<Leader>ni", function() vim.cmd "Inspect" end, { desc = "[n]otify the result of [i]nspect" })
   end,
 }

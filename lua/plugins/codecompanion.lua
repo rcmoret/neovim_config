@@ -3,17 +3,17 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
   keys = {
-    { "<Leader>a",  mode = { "n", "v" }, desc = "code companion prompt" },
-    { "<Leader>A",  mode = { "n", "v" }, desc = "code companion toggle" },
-    { "<Leader>ac", mode = "v",          desc = "code companion add selection" },
-    { "<Leader>ab", mode = "n",          desc = "code companion add buffer" },
+    { "<Leader>a", mode = { "n", "v" }, desc = "code companion prompt" },
+    { "<Leader>A", mode = { "n", "v" }, desc = "code companion toggle" },
+    { "<Leader>ac", mode = "v", desc = "code companion add selection" },
+    { "<Leader>ab", mode = "n", desc = "code companion add buffer" },
   },
   config = function()
-    local codecompanion = require("codecompanion")
+    local codecompanion = require "codecompanion"
 
-    codecompanion.setup({
+    codecompanion.setup {
       file_access = {
-        allow_paths = { vim.fn.expand("~/repos") },
+        allow_paths = { vim.fn.expand "~/repos" },
       },
       strategies = {
         chat = {
@@ -25,10 +25,10 @@ return {
           adapter = "anthropic",
         },
       },
-    })
+    }
 
     local chat_prompt = function()
-      local prompt = vim.fn.input(">")
+      local prompt = vim.fn.input ">"
       vim.cmd("CodeCompanion " .. prompt)
     end
 

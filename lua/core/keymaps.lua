@@ -1,14 +1,22 @@
 -- Editor keymaps. Plugin keymaps live with their spec in lua/plugins/;
 -- which-key group labels are declared in lua/plugins/which-key.lua.
 
-local editor = require("lib.editor")
-local light_switch = require("lib.light_switch")
+local editor = require "lib.editor"
+local light_switch = require "lib.light_switch"
 
 -- PARAGRAPH MOTIONS
-vim.keymap.set({ "n", "v" }, "(", editor.jump_to_paragraph_start,
-  { silent = true, desc = "move to first line of paragraph" })
-vim.keymap.set({ "n", "v" }, ")", editor.jump_to_paragraph_end,
-  { silent = true, desc = "move to last line of paragraph" })
+vim.keymap.set(
+  { "n", "v" },
+  "(",
+  editor.jump_to_paragraph_start,
+  { silent = true, desc = "move to first line of paragraph" }
+)
+vim.keymap.set(
+  { "n", "v" },
+  ")",
+  editor.jump_to_paragraph_end,
+  { silent = true, desc = "move to last line of paragraph" }
+)
 
 -- TABS
 vim.keymap.set("n", "<Leader>tt", "<cmd>tabnew<CR>", { desc = "open new [t]ab" })
@@ -53,16 +61,17 @@ vim.keymap.set({ "v", "n" }, "<Leader>p", [["+p]], { desc = "[p]aste from clipbo
 vim.keymap.set({ "v", "n" }, "<Leader>P", [["+P]], { desc = "[P]aste from clipboard (put before)" })
 vim.keymap.set({ "v", "n" }, "<Leader>x", [["+x]], { desc = "[x] - cut to clipboard" })
 vim.keymap.set("n", "<Leader>d", editor.duplicate_line, { desc = "[d]uplicate current line", silent = true })
-vim.keymap.set("n", "<Leader>D", editor.duplicate_line_realign,
-  { desc = "[D]up current realign below", silent = true })
+vim.keymap.set("n", "<Leader>D", editor.duplicate_line_realign, { desc = "[D]up current realign below", silent = true })
 
 -- SUBSTITUTION
-vim.keymap.set("n",
+vim.keymap.set(
+  "n",
   "<Leader>s",
   [[:s/\(<C-r><C-w>\)/<C-r><C-w>/gcI<Left><Left><Left><Left>]],
   { desc = "[s]ubstitute current word (line)" }
 )
-vim.keymap.set("n",
+vim.keymap.set(
+  "n",
   "<Leader>S",
   [[:%s/\(<C-r><C-w>\)/<C-r><C-w>/gcI<Left><Left><Left><Left>]],
   { desc = "[S]ubstitute current word (file)" }
@@ -82,10 +91,13 @@ vim.keymap.set("n", "<Leader>rZ", "<C-w>=", { desc = "even si[Z]e" })
 vim.keymap.set("n", "<Leader>re", "<C-w>=", { desc = "resize buffers [=] evenly" })
 
 -- CUSTOM TEXT OBJECTS
-vim.keymap.set({ "x", "o" }, "i|", function() editor.select_pipe_textobj(true) end,
-  { desc = "inner pipe text object" })
-vim.keymap.set({ "x", "o" }, "a|", function() editor.select_pipe_textobj(false) end,
-  { desc = "around pipe text object" })
+vim.keymap.set({ "x", "o" }, "i|", function() editor.select_pipe_textobj(true) end, { desc = "inner pipe text object" })
+vim.keymap.set(
+  { "x", "o" },
+  "a|",
+  function() editor.select_pipe_textobj(false) end,
+  { desc = "around pipe text object" }
+)
 
 -- LIGHT SWITCH
 vim.keymap.set("n", "<Leader>T", light_switch.prompt, { desc = "light-switch super [T]oggle" })

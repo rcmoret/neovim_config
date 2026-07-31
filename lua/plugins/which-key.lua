@@ -6,9 +6,9 @@ return {
   dependencies = { "echasnovski/mini.icons" },
   event = "VeryLazy",
   config = function()
-    local wk = require("which-key")
+    local wk = require "which-key"
 
-    wk.setup({
+    wk.setup {
       plugins = {
         marks = false,
         registers = false,
@@ -16,9 +16,9 @@ return {
       presets = {
         z = false,
       },
-    })
+    }
 
-    wk.add({
+    wk.add {
       { "<Leader><Leader>", group = "vi remaps" },
       { "<Leader>b", group = "[b]uffer" },
       { "<Leader>g", group = "[g]it helpers" },
@@ -28,6 +28,6 @@ return {
       { "<Leader>r", group = "[r]esize buffers" },
       { "<Leader>t", group = "[t]ab commands" },
       { "t", group = "[t]elescope search" },
-    })
+    }
   end,
 }

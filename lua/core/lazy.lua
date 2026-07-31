@@ -1,12 +1,16 @@
 -- lazy.nvim bootstrap. Plugin specs are imported from lua/plugins/.
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local out = vim.fn.system({
-    "git", "clone", "--filter=blob:none", "--branch=stable",
-    "https://github.com/folke/lazy.nvim.git", lazypath,
-  })
+  local out = vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "--branch=stable",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
+  }
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
@@ -20,7 +24,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+require("lazy").setup {
   spec = { { import = "plugins" } },
   install = { colorscheme = { "rusty-scheme" } },
   change_detection = { notify = false },
@@ -29,7 +33,7 @@ require("lazy").setup({
       disabled_plugins = { "gzip", "tarPlugin", "tohtml", "tutor", "zipPlugin" },
     },
   },
-})
+}
 
 vim.keymap.set("n", "<Leader>kk", "<cmd>Lazy<CR>", { desc = "la[z]y home" })
 vim.keymap.set("n", "<Leader>kc", "<cmd>Lazy clean<CR>", { desc = "lazy pkgs [c]lean" })

@@ -5,7 +5,7 @@ return {
   {
     "tpope/vim-commentary",
     keys = {
-      { "gc",  mode = { "n", "x", "o" } },
+      { "gc", mode = { "n", "x", "o" } },
       { "gcc", mode = "n" },
     },
   },
@@ -16,7 +16,7 @@ return {
       { "cs", mode = "n" },
       { "ds", mode = "n" },
       { "ys", mode = "n" },
-      { "S",  mode = "x" },
+      { "S", mode = "x" },
     },
   },
 
@@ -28,13 +28,13 @@ return {
 
   -- these register autocmds / operator mappings broadly enough that a key
   -- trigger would be more fragile than it is worth
-  { "tpope/vim-unimpaired",              event = "VeryLazy" },
+  { "tpope/vim-unimpaired", event = "VeryLazy" },
   { "jeffkreeftmeijer/vim-numbertoggle", event = "VeryLazy" },
 
-  { "tpope/vim-endwise",     event = "InsertEnter" },
-  { "tpope/vim-rails",       ft = { "ruby", "eruby" } },
+  { "tpope/vim-endwise", event = "InsertEnter" },
+  { "tpope/vim-rails", ft = { "ruby", "eruby" } },
   { "vim-crystal/vim-crystal", ft = "crystal" },
-  { "mileszs/ack.vim",       cmd = { "Ack", "AckAdd" } },
+  { "mileszs/ack.vim", cmd = { "Ack", "AckAdd" } },
   { "mfussenegger/nvim-dap", lazy = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
@@ -49,10 +49,10 @@ return {
   {
     "alexghergh/nvim-tmux-navigation",
     keys = {
-      { "<C-h>",  "<cmd>NvimTmuxNavigateLeft<CR>",       desc = "tmux navigate left" },
-      { "<C-j>",  "<cmd>NvimTmuxNavigateDown<CR>",       desc = "tmux navigate down" },
-      { "<C-k>",  "<cmd>NvimTmuxNavigateUp<CR>",         desc = "tmux navigate up" },
-      { "<C-l>",  "<cmd>NvimTmuxNavigateRight<CR>",      desc = "tmux navigate right" },
+      { "<C-h>", "<cmd>NvimTmuxNavigateLeft<CR>", desc = "tmux navigate left" },
+      { "<C-j>", "<cmd>NvimTmuxNavigateDown<CR>", desc = "tmux navigate down" },
+      { "<C-k>", "<cmd>NvimTmuxNavigateUp<CR>", desc = "tmux navigate up" },
+      { "<C-l>", "<cmd>NvimTmuxNavigateRight<CR>", desc = "tmux navigate right" },
       { "<C-\\>", "<cmd>NvimTmuxNavigateLastActive<CR>", desc = "tmux navigate last active" },
     },
     opts = {

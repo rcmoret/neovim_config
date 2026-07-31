@@ -2,7 +2,7 @@ local function prompt_cmd(template, input_opts)
   return function()
     local answer = vim.fn.input(input_opts)
     vim.cmd(string.format(template, answer))
-    vim.cmd.echon('""')
+    vim.cmd.echon '""'
   end
 end
 
@@ -12,10 +12,10 @@ return {
     dependencies = { "tpope/vim-rhubarb" },
     cmd = { "Git", "Gdiffsplit", "GBrowse", "Gwrite", "GMove", "GRename", "Gedit", "Gread" },
     keys = {
-      { "<Leader>gb", "<cmd>Git blame<CR>",  desc = "[g]it [b]lame" },
+      { "<Leader>gb", "<cmd>Git blame<CR>", desc = "[g]it [b]lame" },
       { "<Leader>gd", "<cmd>Gdiffsplit<CR>", desc = "[g]it split [d]iff" },
-      { "<Leader>go", "<cmd>GBrowse<CR>",    desc = "[g]it [o]pen in browser" },
-      { "<Leader>gw", "<cmd>Gwrite<CR>",     desc = "[g]it [w]rite" },
+      { "<Leader>go", "<cmd>GBrowse<CR>", desc = "[g]it [o]pen in browser" },
+      { "<Leader>gw", "<cmd>Gwrite<CR>", desc = "[g]it [w]rite" },
       {
         "<Leader>gm",
         prompt_cmd("GMove %s", { prompt = "new path > ", completion = "dir" }),
@@ -46,19 +46,19 @@ return {
     },
     opts = {
       signs = {
-        add          = { text = "┃" },
-        change       = { text = "┃" },
-        delete       = { text = "_" },
-        topdelete    = { text = "‾" },
+        add = { text = "┃" },
+        change = { text = "┃" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
         changedelete = { text = "~" },
-        untracked    = { text = "┆" },
+        untracked = { text = "┆" },
       },
-      signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-      numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
-      linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
-      word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
+      signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
+      numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
+      linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
+      word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
       watch_gitdir = {
-        follow_files = true
+        follow_files = true,
       },
       auto_attach = true,
       attach_to_untracked = false,
@@ -73,7 +73,7 @@ return {
       current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
       sign_priority = 6,
       update_debounce = 100,
-      status_formatter = nil,  -- Use default
+      status_formatter = nil, -- Use default
       max_file_length = 40000, -- Disable if file is longer than this (in lines)
       preview_config = {
         -- Options passed to nvim_open_win
@@ -81,7 +81,7 @@ return {
         style = "minimal",
         relative = "cursor",
         row = 0,
-        col = 1
+        col = 1,
       },
     },
   },
@@ -93,7 +93,7 @@ return {
       {
         "<Leader>gts",
         function()
-          local treename = vim.fn.input("tree >")
+          local treename = vim.fn.input "tree >"
           require("git-worktree").switch_worktree(treename)
         end,
         desc = "[g]it work[t]ree [s]witch",

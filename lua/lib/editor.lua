@@ -6,25 +6,19 @@ local M = {}
 function M.toggle_qf()
   local qf_exists = false
   for _, win in pairs(vim.fn.getwininfo()) do
-    if win["quickfix"] == 1 then
-      qf_exists = true
-    end
+    if win["quickfix"] == 1 then qf_exists = true end
   end
   if qf_exists == true then
     vim.cmd "cclose"
     return
   end
-  if not vim.tbl_isempty(vim.fn.getqflist()) then
-    vim.cmd "copen"
-  end
+  if not vim.tbl_isempty(vim.fn.getqflist()) then vim.cmd "copen" end
 end
 
 function M.jump_to_paragraph_start()
-  local column = vim.fn.virtcol(".")
-  if vim.fn.line(".") == (vim.fn.line("'{") + 1) then
-    vim.fn.cursor(vim.fn.line(".") - 1, column)
-  end
-  local paragraph_start = vim.fn.line("'{")
+  local column = vim.fn.virtcol "."
+  if vim.fn.line "." == (vim.fn.line "'{" + 1) then vim.fn.cursor(vim.fn.line "." - 1, column) end
+  local paragraph_start = vim.fn.line "'{"
   if paragraph_start == 1 then
     vim.fn.cursor(1, column)
   else
@@ -33,13 +27,11 @@ function M.jump_to_paragraph_start()
 end
 
 function M.jump_to_paragraph_end()
-  local column = vim.fn.virtcol(".")
-  if vim.fn.line(".") == (vim.fn.line("'}") - 1) then
-    vim.fn.cursor(vim.fn.line(".") + 1, column)
-  end
-  local paragraph_end = vim.fn.line("'}")
-  if paragraph_end == vim.fn.line("$") then
-    vim.fn.cursor(vim.fn.line("$"), column)
+  local column = vim.fn.virtcol "."
+  if vim.fn.line "." == (vim.fn.line "'}" - 1) then vim.fn.cursor(vim.fn.line "." + 1, column) end
+  local paragraph_end = vim.fn.line "'}"
+  if paragraph_end == vim.fn.line "$" then
+    vim.fn.cursor(vim.fn.line "$", column)
   else
     vim.fn.cursor((paragraph_end - 1), column)
   end
@@ -57,7 +49,7 @@ function M.duplicate_line_realign()
   local line = vim.api.nvim_get_current_line()
   vim.api.nvim_buf_set_lines(0, row, row, false, { line })
   vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
-  vim.cmd("normal! ==")
+  vim.cmd "normal! =="
   vim.api.nvim_win_set_cursor(0, { row, col })
 end
 
@@ -77,9 +69,7 @@ function M.select_pipe_textobj(inner)
     end
   end
   -- If cursor is on | and nothing found before it, treat it as the opening
-  if not open_col and line:sub(col, col) == "|" then
-    open_col = col
-  end
+  if not open_col and line:sub(col, col) == "|" then open_col = col end
 
   if not open_col then return end
 
@@ -101,7 +91,7 @@ function M.select_pipe_textobj(inner)
   if s > e then return end
 
   vim.api.nvim_win_set_cursor(0, { row, s })
-  vim.cmd("normal! v")
+  vim.cmd "normal! v"
   vim.api.nvim_win_set_cursor(0, { row, e })
 end
 

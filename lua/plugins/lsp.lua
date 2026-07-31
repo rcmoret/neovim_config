@@ -12,8 +12,8 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-    local light_switch = require("lib.light_switch")
-    local icons = require("theme.icons")
+    local light_switch = require "lib.light_switch"
+    local icons = require "theme.icons"
 
     vim.lsp.config("*", {
       capabilities = lsp_capabilities,
@@ -21,7 +21,7 @@ return {
     })
 
     vim.lsp.config.ruby_lsp = {
-      cmd = { vim.fn.expand("~/.local/bin/mise"), "exec", "--", "ruby-lsp" },
+      cmd = { vim.fn.expand "~/.local/bin/mise", "exec", "--", "ruby-lsp" },
       filetypes = { "ruby", "eruby" },
       root_markers = { "Gemfile", ".git" },
       init_options = {

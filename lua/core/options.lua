@@ -18,11 +18,11 @@ vim.opt.expandtab = true
 vim.opt.scrolloff = 8
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv "HOME" .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.autoread = true
 vim.opt.mouse = ""
-vim.opt.iskeyword:append({ "-", "@" })
+vim.opt.iskeyword:append { "-", "@" }
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
@@ -40,30 +40,26 @@ vim.opt.listchars = {
   trail = "·",
 }
 
-local light_switch = require("lib.light_switch")
+local light_switch = require "lib.light_switch"
 
-light_switch.register({
+light_switch.register {
   code = "rel",
   desc = "Relative line numbers",
   default = "on",
   enable = function()
-    vim.cmd([[windo set relativenumber]])
-    vim.cmd([[tabdo set relativenumber]])
+    vim.cmd [[windo set relativenumber]]
+    vim.cmd [[tabdo set relativenumber]]
   end,
   disable = function()
-    vim.cmd([[windo set norelativenumber]])
-    vim.cmd([[tabdo set norelativenumber]])
-  end
-})
+    vim.cmd [[windo set norelativenumber]]
+    vim.cmd [[tabdo set norelativenumber]]
+  end,
+}
 
-light_switch.register({
+light_switch.register {
   code = "wr",
   desc = "Line wrap",
   default = "off",
-  enable = function()
-    vim.opt.wrap = true
-  end,
-  disable = function()
-    vim.opt.wrap = false
-  end
-})
+  enable = function() vim.opt.wrap = true end,
+  disable = function() vim.opt.wrap = false end,
+}

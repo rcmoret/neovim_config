@@ -24,6 +24,6 @@ return {
   -- /* more colors can be added after 255 to use with DefaultXX */
   dark_gray = "#33467c",
   float_bg = "#3e3e3d",
-  off_white = "#c0caf5",   -- /* default foreground colour */
-  darkest_blue = "#1a1b26",   -- /* default background colour */
-};
+  off_white = "#c0caf5", -- /* default foreground colour */
+  darkest_blue = "#1a1b26", -- /* default background colour */
+}

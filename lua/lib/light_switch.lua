@@ -2,7 +2,7 @@ local settings = {}
 
 local toggleable = {}
 
-local prompt = function ()
+local prompt = function()
   local menu = ""
   for key, value in pairs(toggleable) do
     menu = menu .. string.format("%-5s %-40s %4s", key, value.desc, settings[key]) .. "\n"
@@ -13,7 +13,7 @@ local prompt = function ()
 
   local configuration = toggleable[option]
 
-  if not(configuration) then
+  if not configuration then
     vim.notify("Invalid option: " .. vim.inspect(option), vim.log.levels.WARN)
     return
   else
@@ -21,9 +21,7 @@ local prompt = function ()
   end
 end
 
-local is_enabled = function (code)
-  return settings[code] == "on"
-end
+local is_enabled = function(code) return settings[code] == "on" end
 
 local run = function(callback)
   if type(callback) == "string" then
@@ -46,24 +44,22 @@ end
 local register = function(options)
   settings[options.code] = options.default
 
-  if options.default == "on" then
-    run(options.enable)
-  end
+  if options.default == "on" then run(options.enable) end
 
-  toggleable[options.code]= {
+  toggleable[options.code] = {
     desc = options.desc,
     toggle = function()
-      if not(is_enabled(options.code)) then
+      if not (is_enabled(options.code)) then
         toggle_on(options.code, options.enable)
       else
         toggle_off(options.code, options.disable)
       end
-    end
+    end,
   }
 end
 
 return {
   is_enabled = is_enabled,
   prompt = prompt,
-  register = register
+  register = register,
 }

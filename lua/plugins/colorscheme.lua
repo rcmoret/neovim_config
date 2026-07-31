@@ -10,20 +10,16 @@ return {
       -- the last known appearance is cached and trusted on the way up. The
       -- async check below corrects it within a frame or two if it went stale
       -- (i.e. the system theme changed while nvim was closed).
-      local cache_path = vim.fn.stdpath("state") .. "/macos-appearance"
+      local cache_path = vim.fn.stdpath "state" .. "/macos-appearance"
 
       local function cached_dark_mode()
         local ok, lines = pcall(vim.fn.readfile, cache_path)
-        if ok and lines and lines[1] then
-          return lines[1] == "dark"
-        end
+        if ok and lines and lines[1] then return lines[1] == "dark" end
         -- no cache yet: pay for one synchronous read
-        return vim.trim(vim.fn.system("defaults read -g AppleInterfaceStyle 2>/dev/null")) == "Dark"
+        return vim.trim(vim.fn.system "defaults read -g AppleInterfaceStyle 2>/dev/null") == "Dark"
       end
 
-      local function write_cache(dark)
-        pcall(vim.fn.writefile, { dark and "dark" or "light" }, cache_path)
-      end
+      local function write_cache(dark) pcall(vim.fn.writefile, { dark and "dark" or "light" }, cache_path) end
 
       local function apply_colorscheme(dark)
         if dark then
@@ -41,23 +37,19 @@ return {
       apply_colorscheme(last_dark)
 
       local function check_appearance()
-        vim.system(
-          { "defaults", "read", "-g", "AppleInterfaceStyle" },
-          { text = true },
-          function(proc)
-            -- exits non-zero in light mode, when the key is absent
-            local dark = vim.trim(proc.stdout or "") == "Dark"
-            if dark ~= last_dark then
-              last_dark = dark
-              -- this runs in a fast event context, where vim.fn is off limits;
-              -- both the redraw and the cache write have to be scheduled
-              vim.schedule(function()
-                apply_colorscheme(dark)
-                write_cache(dark)
-              end)
-            end
+        vim.system({ "defaults", "read", "-g", "AppleInterfaceStyle" }, { text = true }, function(proc)
+          -- exits non-zero in light mode, when the key is absent
+          local dark = vim.trim(proc.stdout or "") == "Dark"
+          if dark ~= last_dark then
+            last_dark = dark
+            -- this runs in a fast event context, where vim.fn is off limits;
+            -- both the redraw and the cache write have to be scheduled
+            vim.schedule(function()
+              apply_colorscheme(dark)
+              write_cache(dark)
+            end)
           end
-        )
+        end)
       end
 
       -- reconcile the cached guess, then poll for changes -- both off the UI thread
