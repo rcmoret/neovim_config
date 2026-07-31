@@ -1,3 +1,18 @@
+-- Loaded on first use. Keys are declared here rather than in config so lazy
+-- can register the triggers without pulling telescope in at startup.
+
+local function builtin(name, opts)
+  return function()
+    require("telescope.builtin")[name](opts)
+  end
+end
+
+local function extension(ext, name)
+  return function()
+    require("telescope").extensions[ext][name]()
+  end
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
@@ -8,9 +23,29 @@ return {
     "ThePrimeagen/git-worktree.nvim",
     "folke/noice.nvim",
   },
-  event = "VeryLazy",
+  cmd = "Telescope",
+  keys = {
+    { "<C-t>", builtin("git_files"), desc = "Fuzzy Find Files (git)" },
+    { "<C-g>", extension("live_grep_args", "live_grep_args"), desc = "[t]elescope [g]rep (with args)" },
+
+    { "ta", builtin("autocommands"), desc = "[t]elescope search in [a]utocommands" },
+    { "tb", builtin("buffers"), desc = "[t]elescope search in [b]uffers" },
+    { "tc", builtin("command_history"), desc = "[t]elescope search [c]ommand history" },
+    { "td", extension("dir", "live_grep"), desc = "[t]elescope search in [d]irectories" },
+    { "tf", builtin("find_files"), desc = "[t]elescope search for [f]iles (all)" },
+    { "tg", extension("live_grep_args", "live_grep_args"), desc = "[t]elescope [g]rep (with args)" },
+    { "th", builtin("help_tags"), desc = "[t]elescope search [h]elp tags" },
+    { "tj", builtin("jumplist"), desc = "[t]elescope search [j]umplist" },
+    { "tk", builtin("keymaps"), desc = "[t]elescope search [k]ey maps" },
+    { "tl", builtin("highlights"), desc = "[t]elescope search high[l]ights" },
+    { "tn", "<cmd>Noice telescope<CR>", desc = "[t]elescope search in [n]otifications" },
+    { "to", builtin("live_grep", { grep_open_files = true }), desc = "[t]elescope grep in [o]pen buffers" },
+    { "tr", builtin("resume"), desc = "[t]elescope [r]esume search" },
+    { "tt", "<cmd>Telescope tailiscope<CR>", desc = "[t]elescope [t]ailwind search" },
+    { "tw", builtin("grep_string"), desc = "[t]elescope search for current [w]ord in working directory" },
+    { "tR", builtin("registers"), desc = "[t]elescope [R]egisters" },
+  },
   config = function()
-    local builtin = require("telescope.builtin")
     local telescope = require("telescope")
     local actions = require("telescope.actions")
 
@@ -47,38 +82,5 @@ return {
     telescope.load_extension("live_grep_args")
     telescope.load_extension("tailiscope")
     telescope.load_extension("noice")
-
-    vim.keymap.set("n", "<C-t>", builtin.git_files, { desc = "Fuzzy Find Files (git)" })
-
-    vim.keymap.set("n", "ta", builtin.autocommands, { desc = "[t]elescope search in [a]utocommands" })
-    vim.keymap.set("n", "tb", builtin.buffers, { desc = "[t]elescope search in [b]uffers" })
-    vim.keymap.set("n", "tc", builtin.command_history, { desc = "[t]elescope search [c]ommand history" })
-    vim.keymap.set("n", "td", telescope.extensions.dir.live_grep, { desc = "[t]elescope search in [d]irectories" })
-    vim.keymap.set("n", "tn", "<cmd>Noice telescope<CR>", { desc = "[t]elescope search in [n]otifications" })
-    vim.keymap.set("n", "tf", builtin.find_files, { desc = "[t]elescope search for [f]iles (all)" })
-    vim.keymap.set(
-      "n",
-      "tg",
-      telescope.extensions.live_grep_args.live_grep_args,
-      { desc = "[t]elescope [g]rep (with args)" }
-    )
-    vim.keymap.set(
-      "n",
-      "<C-g>",
-      telescope.extensions.live_grep_args.live_grep_args,
-      { desc = "[t]elescope [g]rep (with args)" }
-    )
-    vim.keymap.set("n", "th", builtin.help_tags, { desc = "[t]elescope search [h]elp tags" })
-    vim.keymap.set("n", "tj", builtin.jumplist, { desc = "[t]elescope search [j]umplist" })
-    vim.keymap.set("n", "tk", builtin.keymaps, { desc = "[t]elescope search [k]ey maps" })
-    vim.keymap.set("n", "tl", builtin.highlights, { desc = "[t]elescope search high[l]ights" })
-    vim.keymap.set("n", "to", function()
-      builtin.live_grep({ grep_open_files = true })
-    end, { desc = "[t]elescope grep in [o]pen buffers" })
-    vim.keymap.set("n", "tr", builtin.resume, { desc = "[t]elescope [r]esume search" })
-    vim.keymap.set("n", "tt", "<cmd>Telescope tailiscope<CR>", { desc = "[t]elescope [t]ailwind search" })
-    vim.keymap.set("n", "tR", builtin.registers, { desc = "[t]elescope [R]egisters" })
-    vim.keymap.set("n", "tw", builtin.grep_string,
-      { desc = "[t]elescope search for current [w]ord in working directory" })
   end,
 }

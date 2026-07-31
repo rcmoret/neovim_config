@@ -7,25 +7,37 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    -- not lazy-loaded: hijack_netrw_behavior has to be in place before the
-    -- first directory buffer is opened
-    lazy = false,
+    cmd = "Neotree",
+    keys = {
+      {
+        "<Leader>e",
+        function()
+          if vim.fn.expand("%") == "" then
+            vim.cmd("Neotree toggle")
+          else
+            vim.cmd("Neotree toggle reveal_file=%:p")
+          end
+        end,
+        desc = "[e]xplore file tree",
+      },
+    },
+    init = function()
+      -- hijack_netrw_behavior only applies if neo-tree is loaded before the
+      -- directory buffer is created, so load eagerly when nvim is opened on a
+      -- directory and stay lazy otherwise.
+      if vim.fn.argc(-1) == 1 then
+        local stat = vim.uv.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
+    end,
     config = function()
-      local icons = require("theme.icons")
+    local icons = require("theme.icons")
 
     local toggle_explorer = function()
       vim.cmd("Neotree toggle")
     end
-
-    local reveal_in_explorer = function()
-      if (vim.fn.expand("%") == "") then
-        vim.cmd("Neotree toggle")
-      else
-        vim.cmd("Neotree toggle reveal_file=%:p")
-      end
-    end
-
-    vim.keymap.set("n", "<Leader>e", reveal_in_explorer, { desc = "[e]xplore file tree" })
 
     local child_or_open = function(state)
       local node = state.tree:get_node()

@@ -2,29 +2,59 @@
 -- helpers that only need to be present.
 
 return {
-  { "tpope/vim-abolish",    event = "VeryLazy" },
-  { "tpope/vim-commentary", event = "VeryLazy" },
-  { "tpope/vim-endwise",    event = "InsertEnter" },
-  { "tpope/vim-surround",   event = "VeryLazy" },
-  { "tpope/vim-unimpaired", event = "VeryLazy" },
-  { "tpope/vim-rails",      ft = { "ruby", "eruby" } },
+  {
+    "tpope/vim-commentary",
+    keys = {
+      { "gc",  mode = { "n", "x", "o" } },
+      { "gcc", mode = "n" },
+    },
+  },
 
-  { "vim-crystal/vim-crystal",              ft = "crystal" },
-  { "jeffkreeftmeijer/vim-numbertoggle",    event = "VeryLazy" },
-  { "mileszs/ack.vim",                      cmd = { "Ack", "AckAdd" } },
-  { "mfussenegger/nvim-dap",                lazy = true },
-  { "nvim-tree/nvim-web-devicons",          lazy = true },
+  {
+    "tpope/vim-surround",
+    keys = {
+      { "cs", mode = "n" },
+      { "ds", mode = "n" },
+      { "ys", mode = "n" },
+      { "S",  mode = "x" },
+    },
+  },
+
+  {
+    "tpope/vim-abolish",
+    cmd = { "Abolish", "Subvert" },
+    keys = { { "cr", mode = "n", desc = "coerce case (abolish)" } },
+  },
+
+  -- these register autocmds / operator mappings broadly enough that a key
+  -- trigger would be more fragile than it is worth
+  { "tpope/vim-unimpaired",              event = "VeryLazy" },
+  { "jeffkreeftmeijer/vim-numbertoggle", event = "VeryLazy" },
+
+  { "tpope/vim-endwise",     event = "InsertEnter" },
+  { "tpope/vim-rails",       ft = { "ruby", "eruby" } },
+  { "vim-crystal/vim-crystal", ft = "crystal" },
+  { "mileszs/ack.vim",       cmd = { "Ack", "AckAdd" } },
+  { "mfussenegger/nvim-dap", lazy = true },
+  { "nvim-tree/nvim-web-devicons", lazy = true },
 
   {
     "mbbill/undotree",
+    cmd = { "UndotreeToggle", "UndotreeShow" },
     keys = {
-      { "<Leader>u", vim.cmd.UndotreeToggle, desc = "[u]ndotree toggle helper" },
+      { "<Leader>u", "<cmd>UndotreeToggle<CR>", desc = "[u]ndotree toggle helper" },
     },
   },
 
   {
     "alexghergh/nvim-tmux-navigation",
-    event = "VeryLazy",
+    keys = {
+      { "<C-h>",  "<cmd>NvimTmuxNavigateLeft<CR>",       desc = "tmux navigate left" },
+      { "<C-j>",  "<cmd>NvimTmuxNavigateDown<CR>",       desc = "tmux navigate down" },
+      { "<C-k>",  "<cmd>NvimTmuxNavigateUp<CR>",         desc = "tmux navigate up" },
+      { "<C-l>",  "<cmd>NvimTmuxNavigateRight<CR>",      desc = "tmux navigate right" },
+      { "<C-\\>", "<cmd>NvimTmuxNavigateLastActive<CR>", desc = "tmux navigate last active" },
+    },
     opts = {
       disable_when_zoomed = true, -- defaults to false
       keybindings = {

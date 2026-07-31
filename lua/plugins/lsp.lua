@@ -3,10 +3,11 @@
 
 return {
   "neovim/nvim-lspconfig",
+  -- conform is deliberately not a dependency: the <Leader>lf keymap requires
+  -- it on demand, and lazy loads it from that require.
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",
     "j-hui/fidget.nvim",
-    "stevearc/conform.nvim",
   },
   event = { "BufReadPre", "BufNewFile" },
   config = function()

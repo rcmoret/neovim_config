@@ -16,6 +16,10 @@ return {
 
   {
     "goolord/alpha-nvim",
+    -- only useful on a bare `nvim`; skip it entirely when opening files
+    cond = function()
+      return vim.fn.argc(-1) == 0
+    end,
     event = "VimEnter",
     config = function()
       require("alpha").setup(require("alpha.themes.startify").config)
