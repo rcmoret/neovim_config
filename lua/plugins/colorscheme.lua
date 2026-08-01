@@ -1,7 +1,6 @@
 return {
   {
-    "rusty-scheme",
-    dir = "~/repos/nvim-sandbox/rusty-scheme",
+    "rcmoret/rusty-scheme.nvim",
     dependencies = { "rktjmp/lush.nvim" },
     lazy = false,
     priority = 1000,
