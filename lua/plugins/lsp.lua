@@ -130,18 +130,29 @@ return {
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "quick info" })
     vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, { desc = "[l]sp code [a]ctions" })
     vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, { desc = "[l]sp [d]iagnostics" })
-    vim.keymap.set(
-      "n",
-      "<Leader>lf",
-      function()
-        require("conform").format {
-          lsp_fallback = true,
-          async = false,
-          timeout_ms = 1000,
-        }
-      end,
-      { desc = "[l]sp [f]ormat file" }
-    )
+    -- conform.format() returns false only when it found neither a configured
+    -- formatter nor an LSP client that advertises formatting. Ruby has no
+    -- conform formatter, so it rides on ruby_lsp -- and ruby_lsp does not come
+    -- up in a project whose bundle is broken, which used to leave <Leader>lf
+    -- doing nothing at all. Re-indenting with `=` is the floor: it needs no
+    -- gems and works in any buffer with a real indentexpr.
+    vim.keymap.set("n", "<Leader>lf", function()
+      local formatted = require("conform").format {
+        lsp_format = "fallback",
+        async = false,
+        timeout_ms = 1000,
+      }
+
+      -- without a real indent rule `=` just copies the previous line's indent,
+      -- which mangles prose and dotfiles rather than helping
+      local can_indent = vim.bo.indentexpr ~= "" or vim.bo.cindent or vim.bo.lisp
+
+      if not formatted and can_indent then
+        local view = vim.fn.winsaveview()
+        vim.cmd "silent keepjumps normal! gg=G"
+        vim.fn.winrestview(view)
+      end
+    end, { desc = "[l]sp [f]ormat file" })
     vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "[l]sp [i]nfo" })
     vim.keymap.set("n", "<leader>ll", "<cmd>LspLog<CR>", { desc = "[l]sp [l]ogs" })
     vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "[l]sp [r]ename" })

@@ -1,3 +1,10 @@
+-- Filetypes that still format on demand with <Leader>lf, but are left alone
+-- on :w.
+local no_format_on_save = {
+  javascript = true,
+  markdown = true,
+}
+
 return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
@@ -25,6 +32,8 @@ return {
       lua = { "stylua" },
     },
     format_on_save = function(bufnr)
+      if no_format_on_save[vim.bo[bufnr].filetype] then return nil end
+
       -- Skip formatting for any project with a .no-format file at its root
       local bufname = vim.api.nvim_buf_get_name(bufnr)
       local bufdir = vim.fn.fnamemodify(bufname, ":h")

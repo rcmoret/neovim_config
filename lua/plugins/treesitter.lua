@@ -41,6 +41,15 @@ local ensure_installed = {
   "yaml",
 }
 
+-- Filetypes where Neovim's bundled indent script beats the treesitter one.
+-- The `indents` queries are experimental upstream; for Ruby in particular they
+-- mis-indent blocks, `case`/`in`, and multi-line method chains that
+-- runtime/indent/ruby.vim (GetRubyIndent) gets right.
+local native_indent = {
+  ruby = true,
+  eruby = true,
+}
+
 return {
   "nvim-treesitter/nvim-treesitter",
   branch = "main",
@@ -62,6 +71,17 @@ return {
         -- fails when the parser is not installed yet; install() above runs
         -- asynchronously, so this is expected on a cold config
         if not pcall(vim.treesitter.start, args.buf, lang) then return end
+
+        if native_indent[vim.bo[args.buf].filetype] then
+          -- Keep the runtime indentexpr, but note that vim.treesitter.start()
+          -- has just set 'syntax' to empty. indent/ruby.vim drives every
+          -- decision off synID()/hlID('ruby...'), so with syntax off
+          -- GetRubyIndent() returns 0 for every line and `=` flattens the
+          -- file. Turning syntax back on restores it; treesitter still owns
+          -- the visible highlighting, this is only here for synID().
+          vim.bo[args.buf].syntax = vim.bo[args.buf].filetype
+          return
+        end
 
         -- Indentation is experimental upstream and only some languages ship an
         -- `indents` query. Setting indentexpr without one collapses everything

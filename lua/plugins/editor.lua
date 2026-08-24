@@ -31,7 +31,10 @@ return {
   { "tpope/vim-unimpaired", event = "VeryLazy" },
   { "jeffkreeftmeijer/vim-numbertoggle", event = "VeryLazy" },
 
-  { "tpope/vim-endwise", event = "InsertEnter" },
+  -- endwise builds its <CR> mapping on VimEnter and its per-language rules on
+  -- FileType, so any lazy trigger sources it after both have already fired and
+  -- it silently stops inserting `end`. It is ~150 lines of vimscript; eager.
+  { "tpope/vim-endwise", lazy = false },
   { "tpope/vim-rails", ft = { "ruby", "eruby" } },
   { "vim-crystal/vim-crystal", ft = "crystal" },
   { "mileszs/ack.vim", cmd = { "Ack", "AckAdd" } },
