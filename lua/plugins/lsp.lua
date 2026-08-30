@@ -208,5 +208,13 @@ return {
       enable = tw_setup,
       disable = tw_setup,
     }
+
+    light_switch.register {
+      code = "diag",
+      desc = "LSP diagnostics (handy mid-merge-conflict)",
+      default = "on",
+      enable = function() vim.diagnostic.enable(true) end,
+      disable = function() vim.diagnostic.enable(false) end,
+    }
   end,
 }

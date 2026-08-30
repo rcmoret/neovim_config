@@ -8,7 +8,6 @@ local prompt = function()
     menu = menu .. string.format("%-5s %-40s %4s", key, value.desc, settings[key]) .. "\n"
   end
 
-  vim.notify(menu)
   local option = vim.fn.input(menu)
 
   local configuration = toggleable[option]
