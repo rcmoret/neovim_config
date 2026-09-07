@@ -30,6 +30,9 @@ return {
       markdown = { "prettier" },
       graphql = { "prettier" },
       lua = { "stylua" },
+      elixir = { "mix" },
+      eelixir = { "mix" },
+      heex = { "mix" },
     },
     format_on_save = function(bufnr)
       if no_format_on_save[vim.bo[bufnr].filetype] then return nil end

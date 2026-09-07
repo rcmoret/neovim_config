@@ -64,6 +64,7 @@ None of these are installed by the config; language servers are expected on
 | `rust-analyzer` | `rust_analyzer` | `rustup component add rust-analyzer` |
 | `tailwindcss-language-server` | `tailwindcss` | `npm i -g @tailwindcss/language-server` |
 | `ruby-lsp` | `ruby_lsp`, via mise | `mise exec -- gem install ruby-lsp` |
+| `expert` | `expert`, Elixir/HEEx | `brew install expert` |
 
 Two plugins are loaded from local checkouts and must exist:
 

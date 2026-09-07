@@ -57,6 +57,7 @@ return {
         "html",
         "erb",
         "eruby",
+        "heex",
         "css",
         "scss",
         "javascript",
@@ -64,7 +65,7 @@ return {
         "typescript",
         "typescriptreact",
       }
-      local tw_include = { eruby = "erb" }
+      local tw_include = { eruby = "erb", heex = "html" }
       if light_switch.is_enabled "twr" then
         table.insert(tw_filetypes, "ruby")
         tw_include.ruby = "erb"
@@ -120,7 +121,7 @@ return {
       },
     }
 
-    vim.lsp.enable { "ruby_lsp", "ts_ls", "rust_analyzer", "tailwindcss", "lua_ls" }
+    vim.lsp.enable { "ruby_lsp", "ts_ls", "rust_analyzer", "tailwindcss", "lua_ls", "herb_ls", "expert" }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "[g]o to [d]efinition (LSP)" })
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, { desc = "[g]o to References (LSP)" })
