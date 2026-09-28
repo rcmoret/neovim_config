@@ -21,10 +21,7 @@ return {
       local function write_cache(dark) pcall(vim.fn.writefile, { dark and "dark" or "light" }, cache_path) end
 
       local function apply_colorscheme(dark)
-        -- the colorscheme ships a single entry point that picks its light or
-        -- dark palette off 'background', so that has to be set first
-        vim.o.background = dark and "dark" or "light"
-        vim.cmd.colorscheme "rusty-scheme"
+        vim.cmd.colorscheme(dark and "rusty-scheme" or "rusty-scheme-light")
         if not dark then
           vim.schedule(function()
             vim.api.nvim_set_hl(0, "Cursor", { bg = "#CC4400", fg = "#F9F5EE" })
