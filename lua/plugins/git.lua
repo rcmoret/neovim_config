@@ -12,6 +12,7 @@ return {
     dependencies = { "tpope/vim-rhubarb" },
     cmd = { "Git", "Gdiffsplit", "GBrowse", "Gwrite", "GMove", "GRename", "Gedit", "Gread" },
     keys = {
+      { "<Leader>gs", "<cmd>Git<CR>", desc = "[g]it [s]tatus" },
       { "<Leader>gb", "<cmd>Git blame<CR>", desc = "[g]it [b]lame" },
       { "<Leader>gd", "<cmd>Gdiffsplit<CR>", desc = "[g]it split [d]iff" },
       { "<Leader>go", "<cmd>GBrowse<CR>", desc = "[g]it [o]pen in browser" },
