@@ -62,3 +62,11 @@ light_switch.register {
   enable = function() vim.opt.wrap = true end,
   disable = function() vim.opt.wrap = false end,
 }
+
+light_switch.register {
+  code = "cf",
+  desc = "Fold comments",
+  default = "off",
+  enable = function() require("lib.editor").enable_comment_folds() end,
+  disable = function() require("lib.editor").disable_comment_folds() end,
+}

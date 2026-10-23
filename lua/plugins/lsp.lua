@@ -52,6 +52,13 @@ return {
       root_markers = { "Cargo.toml", ".git" },
     }
 
+    vim.lsp.config.gopls = {
+      cmd = { "gopls" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      settings = { gopls = { staticcheck = true } },
+      root_markers = { "go.work", "go.mod", ".git" },
+    }
+
     local tw_setup = function()
       local tw_filetypes = {
         "html",
@@ -121,7 +128,7 @@ return {
       },
     }
 
-    vim.lsp.enable { "ruby_lsp", "ts_ls", "rust_analyzer", "tailwindcss", "lua_ls", "herb_ls", "expert" }
+    vim.lsp.enable { "ruby_lsp", "ts_ls", "rust_analyzer", "tailwindcss", "lua_ls", "herb_ls", "expert", "gopls" }
 
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, { desc = "[g]o to [d]efinition (LSP)" })
     vim.keymap.set("n", "gr", function() vim.lsp.buf.references() end, { desc = "[g]o to References (LSP)" })
@@ -154,7 +161,7 @@ return {
         vim.fn.winrestview(view)
       end
     end, { desc = "[l]sp [f]ormat file" })
-    vim.keymap.set("n", "<leader>li", "<cmd>LspInfo<CR>", { desc = "[l]sp [i]nfo" })
+    vim.keymap.set("n", "<leader>li", "<cmd>checkhealth vim.lsp<CR>", { desc = "[l]sp [i]nfo" })
     vim.keymap.set("n", "<leader>ll", "<cmd>LspLog<CR>", { desc = "[l]sp [l]ogs" })
     vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, { desc = "[l]sp [r]ename" })
     vim.keymap.set("n", "<leader>lR", "<cmd>LspRestart<CR>", { desc = "[l]sp [R]estart" })

@@ -95,4 +95,43 @@ function M.select_pipe_textobj(inner)
   vim.api.nvim_win_set_cursor(0, { row, e })
 end
 
+function M.comment_foldexpr(lnum)
+  local col = vim.fn.getline(lnum):find "%S"
+  if not col then return "=" end
+  local ok, node = pcall(vim.treesitter.get_node, { pos = { lnum - 1, col - 1 } })
+  if ok and node and node:type():find "comment" then return "1" end
+  return "0"
+end
+
+function M.comment_foldtext() return "" end
+
+local comment_fold_options = { "foldmethod", "foldexpr", "foldtext", "foldminlines", "foldlevel", "fillchars" }
+
+function M.disable_comment_folds()
+  local saved = vim.w.comment_folds_saved
+  if not saved then return end
+  vim.wo.foldmethod = "manual"
+  vim.cmd "normal! zE"
+  for _, name in ipairs(comment_fold_options) do
+    vim.wo[name] = saved[name]
+  end
+  vim.w.comment_folds_saved = nil
+end
+
+function M.enable_comment_folds()
+  if vim.w.comment_folds_saved then return end
+  local saved = {}
+  for _, name in ipairs(comment_fold_options) do
+    saved[name] = vim.wo[name]
+  end
+  vim.w.comment_folds_saved = saved
+
+  vim.wo.foldmethod = "expr"
+  vim.wo.foldexpr = "v:lua.require'lib.editor'.comment_foldexpr(v:lnum)"
+  vim.wo.foldtext = "v:lua.require'lib.editor'.comment_foldtext()"
+  vim.wo.foldminlines = 0
+  vim.wo.foldlevel = 0
+  vim.opt_local.fillchars:append { fold = " " }
+end
+
 return M

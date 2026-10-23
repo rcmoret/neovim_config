@@ -27,7 +27,7 @@ return {
       { "<Leader>n", group = "[n]otifications" },
       { "<Leader>r", group = "[r]esize buffers" },
       { "<Leader>t", group = "[t]ab commands" },
-      { "t", group = "[t]elescope search" },
+      { "<Leader>/", group = "telescope search" },
     }
   end,
 }

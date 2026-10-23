@@ -35,3 +35,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = "*.svelte",
   command = "set syntax=html",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Hide tab markers in go, where tabs are the norm",
+  group = vim.api.nvim_create_augroup("GoListchars", { clear = true }),
+  pattern = "go",
+  callback = function() vim.opt_local.listchars:append { tab = "  " } end,
+})
